@@ -1,28 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&family=Nunito+Sans:wght@400;700&display=swap");
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-:root{
---Dark-cyan: rgb(35,71,119);
---Cream: rgb(255,247,238);
---Orange: rgb(212,112,6);
+:root {
+  --Dark-cyan: rgb(35, 71, 119);
+  --Cream: rgb(255, 247, 238);
+  --Orange: rgb(212, 112, 6);
 
---Very-dark-blue: rgb(38,47,68);
---Dark-cream: rgb(250,235,218);
+  --Very-dark-blue: rgb(38, 47, 68);
+  --Dark-cream: rgb(250, 235, 218);
 }
-
 
 body {
   margin: 0;
-  font-family: 'Kumbh Sans', sans-serif;
-font-family: 'Nunito Sans', sans-serif;
-font-size: 14px;
-background-color: var(--Cream);
+  font-family: "Kumbh Sans", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  background-color: var(--Cream);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
