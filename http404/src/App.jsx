@@ -3,6 +3,7 @@ import "./App.css";
 import Footer from "./components/Layout/Footer/Footer";
 import Navigation from "./components/Layout/Navigation/Navigation";
 import Home from "./view/Home/Home";
+import { BookDetails } from "./view/BookDetails/BookDetails"
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
-
+          <Route path="/:bookTitle/:bookId" element={<BookDetails />} />
         </Routes>
         <Footer />
       </BrowserRouter>
