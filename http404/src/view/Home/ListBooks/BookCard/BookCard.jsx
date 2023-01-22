@@ -1,20 +1,20 @@
 import { Link } from "react-router-dom";
 import styles from "./BookCard.module.css";
 
-const BookCard = (props) => {
+const BookCard = ({ book }) => {
   return (
     <div className={styles.card}>
       <div className={styles.cardMedia}>
         <img
           className={styles.bookCover}
-          src={props.image}
-          alt={`${props.title} cover`}
+          src={book.image}
+          alt={`${book.title} cover`}
         />
       </div>
-      <Link to={props.title}>
+      <Link to={`${book.title}/${book.id}`}>
         <div className={styles.cardContent}>
-          <p className={styles.title}> {props.title}</p>
-          <p className={styles.author}> {props.author}</p>
+          <p className={styles.title}> {book.title}</p>
+          <p className={styles.author}> {book.author}</p>
         </div>
       </Link>
     </div>

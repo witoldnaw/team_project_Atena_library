@@ -11,6 +11,10 @@ import { ForgotPassword } from "./components/ForgotPassword/ForgotPassword"
 import Home from "./view/Home/Home";
 import Navigation from "./components/Layout/Navigation/Navigation";
 import { Admin } from "./components/Admin/Admin";
+import Footer from "./components/Layout/Footer/Footer";
+import Navigation from "./components/Layout/Navigation/Navigation";
+import Home from "./view/Home/Home";
+import { BookDetails } from "./view/BookDetails/BookDetails"
 
 
 function App() {
@@ -41,6 +45,7 @@ function App() {
         <Routes>
           <Route path="/" element ={<Layout/>} >
           <Route path="home" element={<Home />} />
+          <Route path="/:bookTitle/:bookId" element={<BookDetails />} />
           <Route path="auth" element={!isAuth ? <Auth/> : <Navigate to="admin" />} >
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
