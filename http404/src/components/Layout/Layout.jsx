@@ -3,6 +3,7 @@ import Footer from "./Footer/Footer";
 import Navigation from "./Navigation/Navigation";
 
 const Layout = () => {
+
   return (
     <>
       <Navigation />
@@ -10,5 +11,6 @@ const Layout = () => {
       <Footer />
     </>
   );
+
 };
 export default Layout;
