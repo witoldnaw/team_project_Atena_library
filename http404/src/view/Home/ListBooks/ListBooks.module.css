@@ -1,0 +1,22 @@
+.listBookWrapper {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin: auto;
+  margin-top: 3rem;
+  width: 70%;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.ListBooks {
+  display: flex;
+  color: var(--Orange);
+  font-size: 3rem;
+  font-weight: bold;
+}
