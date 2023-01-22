@@ -1,14 +1,13 @@
-import { Outlet} from "react-router"
-import Footer from "./Footer/Footer"
+import { Outlet } from "react-router";
+import Footer from "./Footer/Footer";
 
 const Layout = () => {
-    return (
-        <>
-        <Footer />
-        <Outlet/>
-        </>
-    )
+  return (
+    <>
+      <Footer />
+      <Outlet />
+    </>
+  );
+};
 
-}
-
-export default Layout
+export default Layout;
