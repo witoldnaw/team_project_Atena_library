@@ -40,14 +40,7 @@ const ListBooks = () => {
       <span className={styles.ListBooks}>Choose Your Story:</span>
       <div className={styles.cards}>
         {books.map((book) => {
-          return (
-            <BookCard
-              key={book.id}
-              title={book.title}
-              author={book.author}
-              image={book.image}
-            />
-          );
+          return <BookCard key={book.id} book={book} />;
         })}
       </div>
 
