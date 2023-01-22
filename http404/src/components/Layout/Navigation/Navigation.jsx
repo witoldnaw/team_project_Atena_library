@@ -1,30 +1,31 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { auth } from '../../../Api/firebase'
 import styles from "./Navigation.module.css";
 import logo from "./atena_logo1.png";
 import avatar from "./atena_avatar1.png";
 
-const Navigation = () => {
+const Navigation = ({isAuth, email}) => {
   return (
     <nav className={styles.navigation}>
       <img className={styles.logoAtena} src={logo} alt="logo Atena"></img>
       <div className={styles.navigationDetails}>
         <div className={styles.btnWrapper}>
-              <NavLink to="auth/signin">
+          {!isAuth && (
+            <>
+              <Link to="auth/login">
                 <button>Zaloguj się</button>
-              </NavLink>
-              <NavLink to="auth/signup">
+              </Link>
+              <Link to="auth/register">
                 <button>Zarejestruj się</button>
-              </NavLink>
-          
-              {/* <NavLink to="admin">
-                <button className={styles.btn}>Panel klienta</button>
-              </NavLink> */}
-
-          {/* <button className={styles.btn}>
-            Wyloguj się
-          </button> */}
+              </Link>
+              </>
+              )}
+              {isAuth && (
+                <Link to="auth/admin">
+                <button>Panel klienta</button>
+              </Link>
+              )}
         </div>
-      
       <div className={styles.avatarWrapper}>
         <img
           className={styles.avatarAtena}
