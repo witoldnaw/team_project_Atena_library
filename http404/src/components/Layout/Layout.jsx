@@ -5,9 +5,10 @@ import Navigation  from "./Navigation/Navigation"
 const Layout = () => {
     return (
         <>
-        <Navigation/>
-        <Footer />
+        {/* <Navigation/> */}
         <Outlet/>
+        <Footer />
+        
         </>
     )
     }
