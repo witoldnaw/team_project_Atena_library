@@ -41,7 +41,7 @@ function App() {
         <Routes>
           <Route path="/" element ={<Layout/>} >
           <Route path="home" element={<Home />} />
-          <Route path="auth" element={!isAuth ? <Auth/> : <Navigate to="/admin" />} >
+          <Route path="auth" element={!isAuth ? <Auth/> : <Navigate to="admin" />} >
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
             <Route path="forgot-password" element={<ForgotPassword />} />
