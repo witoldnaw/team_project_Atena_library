@@ -10,5 +10,5 @@ const Layout = () => {
         <Outlet/>
         </>
     )
-
+    }
 export default Layout;
