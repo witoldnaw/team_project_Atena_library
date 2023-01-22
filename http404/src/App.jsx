@@ -40,14 +40,15 @@ function App() {
       <Navigation isAuth={isAuth} email={user?.email} />
         <Routes>
           <Route path="/" element ={<Layout/>} >
-          <Route path="home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="auth" element={!isAuth ? <Auth/> : <Navigate to="admin" />} >
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
             <Route path="forgot-password" element={<ForgotPassword />} />
           </Route>
+          <Route path="/:bookTitle/:bookId" element={<BookDetails />} />
           <Route
-            path="admin"
+            path="auth/admin"
             element={isAuth ? <Admin /> : <Navigate to="/auth/login" />}
           />
         </Route>
