@@ -4,17 +4,15 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../src/Api/firebase'
 import "./App.css";
 import { Auth } from "./components/Auth/Auth";
-import Layout from "./components/Layout/Layout"
 import { Register } from "./components/Register/Register";
 import { Login } from "./components/Login/Login";
 import { ForgotPassword } from "./components/ForgotPassword/ForgotPassword"
 import Home from "./view/Home/Home";
 import Navigation from "./components/Layout/Navigation/Navigation";
 import { Admin } from "./components/Admin/Admin";
+import { BookDetails } from "./view/BookDetails/BookDetails";
+import { FallingLines } from 'react-loader-spinner'
 import Footer from "./components/Layout/Footer/Footer";
-import Navigation from "./components/Layout/Navigation/Navigation";
-import Home from "./view/Home/Home";
-import { BookDetails } from "./view/BookDetails/BookDetails"
 
 
 function App() {
@@ -35,7 +33,13 @@ function App() {
   }, [])
 
   if (isAuth === null) {
-    return <h2>Trwa ładowanie aplikacji...</h2>
+    return (
+      <FallingLines
+      color="blue"
+      width="300"
+      visible={true}
+      ariaLabel='falling-lines-loading'
+    />)
   }
   
   return (
@@ -43,20 +47,19 @@ function App() {
       <BrowserRouter>
       <Navigation isAuth={isAuth} email={user?.email} />
         <Routes>
-          <Route path="/" element ={<Layout/>} >
-          <Route path="home" element={<Home />} />
-          <Route path="/:bookTitle/:bookId" element={<BookDetails />} />
+          <Route path="/" element={<Home />} />
           <Route path="auth" element={!isAuth ? <Auth/> : <Navigate to="admin" />} >
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
             <Route path="forgot-password" element={<ForgotPassword />} />
           </Route>
+          <Route path="/:bookTitle/:bookId" element={<BookDetails />} />
           <Route
-            path="admin"
+            path="auth/admin"
             element={isAuth ? <Admin /> : <Navigate to="/auth/login" />}
           />
-        </Route>
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </div>
   );
