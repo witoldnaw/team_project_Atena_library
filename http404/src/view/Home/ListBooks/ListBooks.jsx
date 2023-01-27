@@ -37,7 +37,7 @@ const ListBooks = () => {
 
   return (
     <div className={styles.listBookWrapper}>
-      <span className={styles.ListBooks}>Choose Your Story:</span>
+      <span className={styles.ListBooks}>Wypożycz książkę:</span>
       <div className={styles.cards}>
         {books.map((book) => {
           return <BookCard key={book.id} book={book} />;
