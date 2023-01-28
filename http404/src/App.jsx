@@ -3,14 +3,16 @@ import { useState, useEffect } from "react";
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../src/Api/firebase'
 import "./App.css";
-import { Auth } from "./components/Auth/Auth";
-import Layout from "./components/Layout/Layout"
+import { Auth } from "./components/UserProfile/UserProfile";
 import { Register } from "./components/Register/Register";
 import { Login } from "./components/Login/Login";
 import { ForgotPassword } from "./components/ForgotPassword/ForgotPassword"
 import Home from "./view/Home/Home";
 import Navigation from "./components/Layout/Navigation/Navigation";
 import { Admin } from "./components/Admin/Admin";
+import { BookDetails } from "./view/BookDetails/BookDetails";
+import { FallingLines } from 'react-loader-spinner'
+import Footer from "./components/Layout/Footer/Footer";
 
 
 function App() {
@@ -31,7 +33,13 @@ function App() {
   }, [])
 
   if (isAuth === null) {
-    return <h2>Trwa ładowanie aplikacji...</h2>
+    return (
+      <FallingLines
+      color="blue"
+      width="300"
+      visible={true}
+      ariaLabel='falling-lines-loading'
+    />)
   }
   
   return (
@@ -39,7 +47,6 @@ function App() {
       <BrowserRouter>
       <Navigation isAuth={isAuth} email={user?.email} />
         <Routes>
-          <Route path="/" element ={<Layout/>} >
           <Route path="/" element={<Home />} />
           <Route path="auth" element={!isAuth ? <Auth/> : <Navigate to="admin" />} >
             <Route path="register" element={<Register />} />
@@ -51,8 +58,8 @@ function App() {
             path="auth/admin"
             element={isAuth ? <Admin /> : <Navigate to="/auth/login" />}
           />
-        </Route>
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </div>
   );

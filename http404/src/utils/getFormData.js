@@ -5,6 +5,7 @@ export const getFormData = e => {
     const formData = {
       email: email?.value,
       password: password?.value,
+      
     }
   
     return formData
