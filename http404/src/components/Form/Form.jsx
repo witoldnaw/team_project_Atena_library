@@ -1,7 +1,7 @@
 
 export const Form = ({ submitText, isPasswordHidden = false, onSubmit }) => (
   
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} >
       <div>
         <label htmlFor="email">Podaj email</label>
         <input type="email" name="email" id="email" />
