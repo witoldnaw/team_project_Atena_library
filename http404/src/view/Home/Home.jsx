@@ -1,14 +1,13 @@
 import HeroContent from "./HeroContent/HeroContent";
-import ListBooks from "./ListBooks/ListBooks"
+import ListBooks from "./ListBooks/ListBooks";
 
 const Home = () => {
-    return (
-<>
-<HeroContent/>
-<ListBooks />
-</>
-
-);
+  return (
+    <>
+      <HeroContent />
+      <ListBooks />
+    </>
+  );
 };
 
-export default Home
+export default Home;
