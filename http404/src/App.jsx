@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../src/Api/firebase'
 import "./App.css";
-import { Auth } from "./components/Auth/Auth";
+import { Auth } from "./components/UserProfile/UserProfile";
 import { Register } from "./components/Register/Register";
 import { Login } from "./components/Login/Login";
 import { ForgotPassword } from "./components/ForgotPassword/ForgotPassword"

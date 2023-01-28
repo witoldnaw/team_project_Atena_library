@@ -8,7 +8,9 @@ import avatar from "./atena_avatar1.png";
 const Navigation = ({isAuth, email}) => {
   return (
     <nav className={styles.navigation}>
+      <Link to="/">
       <img className={styles.logoAtena} src={logo} alt="logo Atena"></img>
+      </Link>
       <div className={styles.navigationDetails}>
         <div className={styles.btnWrapper}>
           {!isAuth && (
