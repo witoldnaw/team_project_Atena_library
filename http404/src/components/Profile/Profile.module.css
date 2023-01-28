@@ -1,0 +1,64 @@
+.user_profile {
+    display: flex;
+    gap: 50px;
+    padding: 35px 100px;
+    background-color: #fff;
+}
+
+.user_picture {
+    min-width: 200px;
+}
+
+.user_text {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact {
+    display: flex;
+    gap: 25px;
+}
+
+.user_books {
+    margin: 35px 0px;
+    width: 100%;
+}
+
+.book {
+    display: flex;
+    background-color: #fff;
+    padding: 20px 100px;
+}
+
+.book_details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.button_wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 35px 0;
+}
+
+.button {
+    max-width: 350px;
+    min-width: 250px;
+    margin: 0;
+    border: 0;
+    padding: 10px 50px;
+    background-color: #d47005;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 25px;
+    transition: 0.3s;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.button:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
