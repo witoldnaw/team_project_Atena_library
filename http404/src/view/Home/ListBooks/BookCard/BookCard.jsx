@@ -7,13 +7,13 @@ const BookCard = ({ book, isAuth }) => {
     <div className={styles.cardWrapper}>
       <div className={styles.card}>
         <div className={styles.cardOptions}>
-          <Link to={`${book.title}/${book.id}`}>
+          <Link to={`/${book.title}/${book.id}`}>
             <button className={styles.cardOption}>Szczegóły</button>
           </Link>
           {isAuth ? (
             <UserProfile />
           ) : (
-            <Link to="auth/login">
+            <Link to="/auth/login">
               <button className={styles.cardOption}>Wypożycz</button>
             </Link>
           )}
@@ -26,7 +26,7 @@ const BookCard = ({ book, isAuth }) => {
           />
         </div>
       </div>
-      <Link to={`${book.title}/${book.id}`}>
+      <Link to={`/${book.title}/${book.id}`}>
         <div className={styles.cardContent}>
           <p className={styles.title}> {book.title}</p>
           <p className={styles.author}> {book.author}</p>
