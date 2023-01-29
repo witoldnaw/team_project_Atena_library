@@ -41,6 +41,7 @@ export const BookDetails = () => {
         <ul className={styles.info_list}>
           <li>
             <p>Tytuł: {book.title}</p>
+
           </li>
           <li>
             <p>Autor: {book.author}</p>
@@ -60,8 +61,10 @@ export const BookDetails = () => {
           className={styles.button}
         >
           {book.status === "avaliable"
-            ? "Rent this book"
-            : "Check availability"}
+
+            ? "Wypożycz książkę"
+            : "Książka chwilowo niedostępna"}
+
         </button>
         <ToastContainer
           position="top-right"
