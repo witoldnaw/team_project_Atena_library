@@ -26,10 +26,6 @@ export const FormRegister = ({ submitText, onSubmit }) => (
         <label htmlFor="description">Napisz coś o sobie</label>
         <input type="text" name="description" id="description" />
       </div>
-      <div className={styles.labelWrapper}>
-        <label htmlFor="photo">Zdjęcie</label>
-        <input type="file" name="photo" id="photo" />
-      </div>
       <div className={styles.btnWrapper}>
       <button className={styles.btnForm}>{submitText}</button>
       </div>

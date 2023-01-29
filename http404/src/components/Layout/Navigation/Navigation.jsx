@@ -25,7 +25,7 @@ const Navigation = ({ user }) => {
           )}
           {user && (
             <>
-              <Link to="auth/UserProfile">
+              <Link to="auth/profile">
                 <button>Panel klienta</button>
               </Link>
               <Link to="/">

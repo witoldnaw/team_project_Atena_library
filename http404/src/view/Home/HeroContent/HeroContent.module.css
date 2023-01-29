@@ -1,5 +1,5 @@
 .headerWrapper {
-    padding-top: 10vw;
+    /* padding-top: 10vw; */
     width: 100%;
     height: 30vw;
     background-color: var(--Dark-cyan);
@@ -7,6 +7,9 @@
 
 .illustrationWrapper {
     height: 100%;
+    display: flex;
+    justify-content: end;
+    padding-right: 5vw;
 }
 
 .illustration {
@@ -16,10 +19,10 @@
 .description {
     z-index: 2;
     position: absolute;
-    top: 12vw;
-    left: 5vw;
+    top: 16vw;
+    left: 9vw;
     color: var(--Dark-cream);
-    font-size: 1.3rem;
+    font-size: 1rem;
 }
 
 .btn {
@@ -30,5 +33,9 @@
     border-radius: 20px;
     color: var(--Dark-cream);
     font-size: 1.3rem;
-    margin-top: 2vw;
+    margin-top: 4vw;
+}
+
+.btn:hover {
+    opacity: 0.6;
 }

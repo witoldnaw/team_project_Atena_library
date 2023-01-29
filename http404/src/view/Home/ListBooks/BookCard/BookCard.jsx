@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { UserProfile } from "../../../../components/UserProfile/UserProfile";
+import { Profile } from "../../../../components/Profile/Profile"
 import styles from "./BookCard.module.css";
 
 const BookCard = ({ book, user }) => {
@@ -11,9 +11,9 @@ const BookCard = ({ book, user }) => {
             <button className={styles.cardOption}>Szczegóły</button>
           </Link>
           {user ? (
-            <UserProfile />
+            <Profile />
           ) : (
-            <Link to="/auth/login">
+            <Link to="/auth/profile">
               <button className={styles.cardOption}>Wypożycz</button>
             </Link>
           )}
