@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { UserProfile } from "../../../../components/UserProfile/UserProfile";
 import styles from "./BookCard.module.css";
 
-const BookCard = ({ book, isAuth }) => {
+const BookCard = ({ book, user }) => {
   return (
     <div className={styles.cardWrapper}>
       <div className={styles.card}>
@@ -10,13 +10,13 @@ const BookCard = ({ book, isAuth }) => {
           <Link to={`/${book.title}/${book.id}`}>
             <button className={styles.cardOption}>Szczegóły</button>
           </Link>
-          {isAuth ? (
+          {user ? (
             <UserProfile />
           ) : (
             <Link to="/auth/login">
               <button className={styles.cardOption}>Wypożycz</button>
-
             </Link>
+          )}
         </div>
         <div className={styles.cardMedia}>
           <img
@@ -34,7 +34,6 @@ const BookCard = ({ book, isAuth }) => {
       </Link>
     </div>
   );
-
 };
 
 export default BookCard;
