@@ -1,8 +1,8 @@
 import { signInWithEmailAndPassword } from "@firebase/auth";
-import { Form } from "../Form/Form";
-import { auth } from "../../Api/firebase";
-import { firebaseErrors } from "../../utils/firebaseErrors";
-import { getFormData } from "../../utils/getFormData";
+import { FormLogin } from "../../Auth/Form/FormLogin";
+import { auth } from "../../../Api/firebase";
+import { firebaseErrors } from "../../../utils/firebaseErrors";
+import { getFormData } from "../../../utils/getFormData";
 import { useNavigate } from "react-router-dom";
 
 
@@ -22,5 +22,5 @@ export const Login = () => {
       });
   };
 
-  return <Form submitText="Zaloguj się" onSubmit={handleLogin} />;
+  return <FormLogin submitText="Zaloguj się" onSubmit={handleLogin} />;
 };

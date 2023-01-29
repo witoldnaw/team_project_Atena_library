@@ -1,7 +1,7 @@
 import styles from "./Form.module.css"
 import picture from "./illustration_atena_login.png"
 
-export const Form = ({ submitText, isPasswordHidden = false, onSubmit }) => (
+export const FormLogin = ({ submitText, isPasswordHidden = false, onSubmit }) => (
   
 
   <div className={styles.formWrapper}>

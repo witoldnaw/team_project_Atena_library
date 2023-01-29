@@ -1,5 +1,5 @@
 import styles from "./Profile.module.css";
-import avatar from "../../assets/atena_avatar1.png";
+import avatar from "../../../assets/atena_avatar1.png";
 
 export const Profile = () => {
     return (

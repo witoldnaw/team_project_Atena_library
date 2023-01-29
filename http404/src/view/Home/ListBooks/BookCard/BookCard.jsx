@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Profile } from "../../../../components/Profile/Profile"
+import { Profile } from "../../../Auth/Profile/Profile"
 import styles from "./BookCard.module.css";
 
 const BookCard = ({ book, user }) => {

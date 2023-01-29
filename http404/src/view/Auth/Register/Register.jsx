@@ -1,9 +1,9 @@
 import { createUserWithEmailAndPassword } from "@firebase/auth";
-import { FormRegister } from "../Form/FormRegister";
-import { auth, db } from "../../Api/firebase";
-import { firebaseErrors } from "../../utils/firebaseErrors";
-import { getFormData } from "../../utils/getFormData";
+import { auth, db } from "../../../Api/firebase";
+import { firebaseErrors } from "../../../utils/firebaseErrors";
+import { getFormData } from "../../../utils/getFormData";
 import { doc, setDoc } from "firebase/firestore";
+import { FormRegister } from "../Form/FormRegister";
 
 export const Register = () => {
   const handleRegister = async (e) => {
