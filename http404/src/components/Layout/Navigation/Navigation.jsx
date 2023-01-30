@@ -21,25 +21,33 @@ const Navigation = ({ user }) => {
               <Link to="auth/register">
                 <button>Zarejestruj się</button>
               </Link>
+              <div className={styles.avatarWrapper}>
+                <Link to="auth/login">
+                  <img
+                    className={styles.avatarAtena}
+                    src={avatar}
+                    alt="avatar Atena"
+                  ></img>
+                </Link>
+              </div>
             </>
           )}
           {user && (
             <>
-              <Link to="auth/profile">
-                <button>Panel klienta</button>
-              </Link>
               <Link to="/">
                 <button onClick={() => signOut(auth)}>Wyloguj się</button>
               </Link>
+              <div className={styles.avatarWrapper}>
+                <Link to="auth/profile">
+                  <img
+                    className={styles.avatarAtena}
+                    src={avatar}
+                    alt="avatar Atena"
+                  ></img>
+                </Link>
+              </div>
             </>
           )}
-        </div>
-        <div className={styles.avatarWrapper}>
-          <img
-            className={styles.avatarAtena}
-            src={avatar}
-            alt="avatar Atena"
-          ></img>
         </div>
       </div>
     </nav>
