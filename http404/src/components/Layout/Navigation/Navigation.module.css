@@ -1,5 +1,4 @@
 .navigation {
-    /* position: fixed; */
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 100%;
@@ -25,9 +24,11 @@
   }
 
 
-  .btnWrapper, .avatarAtena {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2 ;
+  .btnWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
   }
 
   .navigationDetails {
