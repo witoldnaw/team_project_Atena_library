@@ -48,32 +48,33 @@ a {
   justify-content: end;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(38, 47, 68, 0.8);
+  background-color: rgb(250, 235, 218, 0.8);
   width: 14rem;
   height: 20rem;
 }
 
 .card:hover .cardOption {
-  width: 8rem;
-  height: 2rem;
-  margin: 1.5rem;
+  width: 10rem;
+  height: 2.5rem;
+  margin: 1rem;
   background-color: var(--Dark-cream);
   border-color: var(--Orange);
   border-width: 0.2rem;
-  border-radius: 0.9rem;
+  border-radius: 1.5rem;
   color: var(--Orange);
   font-size: 1.1rem;
   opacity: 1;
   font-family: "Nunito Sans", sans-serif;
 }
 .card:hover .cardOption:hover {
-  width: 8rem;
-  height: 2rem;
-  margin: 1.5rem;
+  width: 10rem;
+  height: 2.5rem;
+  margin: 1rem;
   background-color: var(--Orange);
   border-style: none;
-  border-radius: 0.9rem;
+  border-radius: 1.5rem;
   color: var(--Dark-cream);
   font-size: 1.1rem;
+  font-weight: bold;
   font-family: "Nunito Sans", sans-serif;
 }

@@ -7,7 +7,7 @@ export const FormLogin = ({
   onSubmit,
 }) => (
   <div className={styles.formWrapper}>
-    <img className={styles.picture} src={picture} alt="picture books"></img>
+    <img className={styles.picture} src={picture} alt="books"></img>
     <form onSubmit={onSubmit}>
       <div className={styles.labelWrapper}>
         <label htmlFor="email">E-mail:</label>

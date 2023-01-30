@@ -14,9 +14,9 @@ const HeroContent = () => {
         ></img>
       </div>
       <div className={styles.description}>
-        <h1>
+        <p>
           "Kto czyta książki <br></br> żyje podwójnie"
-        </h1>
+        </p>
         <Link to="searching">
           <button className={styles.btn}>Wyszukaj książkę</button>
         </Link>
