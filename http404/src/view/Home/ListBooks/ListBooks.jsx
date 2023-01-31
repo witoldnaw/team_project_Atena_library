@@ -5,8 +5,8 @@ import BookCard from "./BookCard/BookCard";
 import styles from "./ListBooks.module.css";
 import ReactPaginate from "react-paginate";
 
-const ListBooks = ({ selectedGenres }) => {
-  console.log(`selected Genres ${selectedGenres}`);
+const ListBooks = ({ selectedGenre }) => {
+  console.log(`selected Genres:`, selectedGenre);
 
   const [books, setBooks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,15 +17,27 @@ const ListBooks = ({ selectedGenres }) => {
     const startIndex = (currentPage - 1) * limit;
     const booksCollection = collection(db, "books");
     getDocs(booksCollection).then((querySnapshot) => {
-      const books = querySnapshot.docs
-        .map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }))
-        .slice(startIndex, startIndex + limit);
-      console.log(books);
-      setBooks(books);
-      setTotalPages(Math.ceil(querySnapshot.size / limit));
+      const allBooks = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      console.log(`wszytskie książki`, allBooks);
+      const filteredBooks = allBooks.filter((book) => {
+        if (selectedGenre.id === "allGenres") {
+          return true
+        }
+        if (book.genre) {
+          return book.genre.toLowerCase() === selectedGenre.name.toLowerCase();
+        } else {
+          return false;
+        }
+      });
+      console.log(`przefiltrowane książki`, filteredBooks);
+      const booksOnPage = filteredBooks.slice(startIndex, startIndex + limit);
+
+      console.log(`książki na stronie`, booksOnPage);
+      setBooks(booksOnPage);
+      setTotalPages(Math.ceil(filteredBooks.length / limit));
     });
   };
 

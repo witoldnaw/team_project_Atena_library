@@ -4,13 +4,16 @@ import HeroContent from "./HeroContent/HeroContent";
 import ListBooks from "./ListBooks/ListBooks";
 
 const Home = () => {
-  const [selectedGenres, setSelectedGenres] = useState(["Kryminał"]);
+  const [selectedGenre, setSelectedGenre] = useState({
+    name: "Wszystkie",
+    id : "allGenres"
+  });
 
   return (
     <>
       <HeroContent />
       <Filtration />
-      <ListBooks selectedGenres={selectedGenres} />
+      <ListBooks selectedGenre={selectedGenre} />
     </>
   );
 };

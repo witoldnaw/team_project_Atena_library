@@ -25,7 +25,7 @@ const Filtration = () => {
 
   return (
     <div className={styles.filtrationWrapper}>
-        <Filter key="cokolwiek" genre="Wszystkie książki"/>
+        <Filter key="allGenres" genre="Wszystkie książki"/>
       {genres.map((genreItem) => {
         return <Filter key={genreItem.id} genre={genreItem.name}/>
        ;
