@@ -1,0 +1,10 @@
+.filtrationWrapper{
+display: flex;
+flex-direction: row;
+height: 100px;
+}
+
+.filter{
+    padding: 2rem;
+}
+

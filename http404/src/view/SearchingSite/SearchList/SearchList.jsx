@@ -13,7 +13,6 @@ const SearchList = () => {
 
   const getBooks = (query) => {
     if (query.length === 0) {
-      console.log("Puste query");
       setLastSearchQuery(query);
       setSearchState(true);
       setBooks([]);
@@ -33,7 +32,7 @@ const SearchList = () => {
           book.author.toLowerCase().includes(query.toLowerCase())
       );
 
-      console.log("przefiltrowane książki:", filteredBooks);
+      console.log(`przefiltrowane książki: ${filteredBooks}` );
       setLastSearchQuery(query);
       setBooks(filteredBooks);
       setSearchState(true);

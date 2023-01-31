@@ -5,7 +5,9 @@ import BookCard from "./BookCard/BookCard";
 import styles from "./ListBooks.module.css";
 import ReactPaginate from "react-paginate";
 
-const ListBooks = () => {
+const ListBooks = ({ selectedGenres }) => {
+  console.log(`selected Genres ${selectedGenres}`);
+
   const [books, setBooks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 6;
