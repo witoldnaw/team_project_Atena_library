@@ -4,7 +4,7 @@ import styles from "./Filtration.module.css";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../Api/firebase";
 
-const Filtration = () => {
+const Filtration = ({ onGenreChange }) => {
   const [genres, setGenres] = useState([]);
 
   const getGenres = () => {
@@ -25,10 +25,19 @@ const Filtration = () => {
 
   return (
     <div className={styles.filtrationWrapper}>
-        <Filter key="allGenres" genre="Wszystkie książki"/>
+      <Filter
+        onGenreChange={onGenreChange}
+        key="allGenres"
+        genre={{ id: "allGenres", name: "Wszystkie książki" }}
+      />
       {genres.map((genreItem) => {
-        return <Filter key={genreItem.id} genre={genreItem.name}/>
-       ;
+        return (
+          <Filter
+            onGenreChange={onGenreChange}
+            key={genreItem.id}
+            genre={genreItem}
+          />
+        );
       })}
     </div>
   );

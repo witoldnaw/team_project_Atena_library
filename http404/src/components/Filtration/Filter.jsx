@@ -1,11 +1,9 @@
 import styles from "./Filtration.module.css";
 
-const Filter = ({genre}) => {
-
-
+const Filter = ({ genre, onGenreChange }) => {
   return (
     <div className={styles.filter}>
-      <button>{genre}</button>
+      <button onClick={() => onGenreChange(genre)}>{genre.name}</button>
     </div>
   );
 };

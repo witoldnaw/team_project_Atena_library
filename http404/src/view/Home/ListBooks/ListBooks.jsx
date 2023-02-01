@@ -5,16 +5,15 @@ import BookCard from "./BookCard/BookCard";
 import styles from "./ListBooks.module.css";
 import ReactPaginate from "react-paginate";
 
-const ListBooks = ({ selectedGenre }) => {
+const ListBooks = ({ selectedGenre, currentPage, onPageChange }) => {
   console.log(`selected Genres:`, selectedGenre);
 
   const [books, setBooks] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const limit = 6;
+
+  const pageSize = 6;
   const [totalPages, setTotalPages] = useState(1);
 
   const getBooks = () => {
-    const startIndex = (currentPage - 1) * limit;
     const booksCollection = collection(db, "books");
     getDocs(booksCollection).then((querySnapshot) => {
       const allBooks = querySnapshot.docs.map((doc) => ({
@@ -24,7 +23,7 @@ const ListBooks = ({ selectedGenre }) => {
       console.log(`wszytskie książki`, allBooks);
       const filteredBooks = allBooks.filter((book) => {
         if (selectedGenre.id === "allGenres") {
-          return true
+          return true;
         }
         if (book.genre) {
           return book.genre.toLowerCase() === selectedGenre.name.toLowerCase();
@@ -33,21 +32,18 @@ const ListBooks = ({ selectedGenre }) => {
         }
       });
       console.log(`przefiltrowane książki`, filteredBooks);
-      const booksOnPage = filteredBooks.slice(startIndex, startIndex + limit);
+      const startIndex = currentPage * pageSize;
+      const booksOnPage = filteredBooks.slice(startIndex, startIndex + pageSize);
 
       console.log(`książki na stronie`, booksOnPage);
       setBooks(booksOnPage);
-      setTotalPages(Math.ceil(filteredBooks.length / limit));
+      setTotalPages(Math.ceil(filteredBooks.length / pageSize));
     });
   };
 
   useEffect(() => {
     getBooks();
-  }, [currentPage]);
-
-  const handlePageChange = (data) => {
-    setCurrentPage(data.selected + 1);
-  };
+  }, [currentPage, selectedGenre]);
 
   return (
     <div className={styles.listBookWrapper}>
@@ -66,10 +62,11 @@ const ListBooks = ({ selectedGenre }) => {
           pageCount={totalPages}
           marginPagesDisplayed={2}
           pageRangeDisplayed={10}
-          onPageChange={handlePageChange}
+          onPageChange={onPageChange}
           containerClassName={"pagination"}
           subContainerClassName={"pages pagination"}
           activeClassName={"active"}
+          forcePage={currentPage}
         />
       </div>
     </div>

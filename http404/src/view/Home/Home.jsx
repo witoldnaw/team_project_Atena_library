@@ -6,14 +6,28 @@ import ListBooks from "./ListBooks/ListBooks";
 const Home = () => {
   const [selectedGenre, setSelectedGenre] = useState({
     name: "Wszystkie",
-    id : "allGenres"
+    id: "allGenres",
   });
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const onGenreChange = (genre) => {
+    setSelectedGenre(genre);
+    setCurrentPage(0);
+    console.log(`onGenreChange`, genre);
+  };
+  const onPageChange = (data) => {
+    setCurrentPage(data.selected);
+  };
 
   return (
     <>
       <HeroContent />
-      <Filtration />
-      <ListBooks selectedGenre={selectedGenre} />
+      <Filtration onGenreChange={onGenreChange} />
+      <ListBooks
+        currentPage={currentPage}
+        selectedGenre={selectedGenre}
+        onPageChange={onPageChange}
+      />
     </>
   );
 };
