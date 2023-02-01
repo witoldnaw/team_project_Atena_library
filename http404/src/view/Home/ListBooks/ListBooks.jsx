@@ -8,7 +8,7 @@ import ReactPaginate from "react-paginate";
 const ListBooks = () => {
   const [books, setBooks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const limit = 3;
+  const limit = 6;
   const [totalPages, setTotalPages] = useState(1);
 
   const getBooks = () => {

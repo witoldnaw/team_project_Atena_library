@@ -40,7 +40,8 @@ export const BookDetails = () => {
         <img src={book.image} alt="cover img" />{" "}
         <ul className={styles.info_list}>
           <li>
-            <p>Tytu: {book.title}</p>
+            <p>Tytuł: {book.title}</p>
+
           </li>
           <li>
             <p>Autor: {book.author}</p>
@@ -60,8 +61,10 @@ export const BookDetails = () => {
           className={styles.button}
         >
           {book.status === "avaliable"
+
             ? "Wypożycz książkę"
             : "Książka chwilowo niedostępna"}
+
         </button>
         <ToastContainer
           position="top-right"
