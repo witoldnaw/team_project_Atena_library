@@ -26,16 +26,15 @@
   width: 100%;
 }
 
-.book {
+.user_shelf {
+  margin: 15px 100px;
+  font-size: 26px;
+}
+
+.books {
   display: flex;
   background-color: #fff;
   padding: 20px 100px;
-}
-
-.book_details {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
 }
 
 .button_wrapper {

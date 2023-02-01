@@ -1,0 +1,25 @@
+.user_books {
+  display: flex;
+  color: #000;
+}
+
+.user_books img {
+  max-width: 100px;
+  margin-right: 50px;
+}
+.user_books h3 {
+  font-size: 24px;
+}
+.user_books h4 {
+  font-size: 18px;
+}
+
+.user_books p {
+  font-size: 18px;
+}
+
+.user_books_details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}

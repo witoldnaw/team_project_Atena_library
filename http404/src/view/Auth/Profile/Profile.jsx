@@ -14,9 +14,9 @@ export const Profile = () => {
         <div>
           <ul className={styles.user_text}>
             <li>
-              <h3>
+              <h2>
                 {userData.name} {userData.surname}
-              </h3>
+              </h2>
             </li>
             <li>
               <p>{userData.description}</p>
@@ -28,8 +28,8 @@ export const Profile = () => {
         </div>
       </section>
       <section className={styles.user_books}>
-        <h2>Twoja Półka:</h2>
-        <ul className={styles.book}>
+        <h2 className={styles.user_shelf}>Twoja Półka:</h2>
+        <ul className={styles.books}>
           {/* <li>
             <img src="" alt="book cover" />
           </li>
