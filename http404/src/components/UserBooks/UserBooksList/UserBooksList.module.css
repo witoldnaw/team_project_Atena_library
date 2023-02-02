@@ -1,0 +1,50 @@
+.user_books {
+  display: flex;
+  justify-content: space-between;
+  color: #000;
+  margin: 15px 0;
+}
+
+.user_books img {
+  max-width: 100px;
+  margin-right: 50px;
+}
+.user_books h3 {
+  font-size: 24px;
+}
+.user_books h4 {
+  font-size: 18px;
+}
+
+.user_books p {
+  font-size: 18px;
+}
+
+.user_books_details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 80%;
+}
+
+.button {
+  max-width: 300px;
+  min-width: 200px;
+  margin: 0;
+  border: 0;
+  padding: 10px 25px;
+  background-color: #d47005;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 25px;
+  transition: 0.3s;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.button_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 15px;
+}
