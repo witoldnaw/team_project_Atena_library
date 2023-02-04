@@ -38,6 +38,7 @@ export const UserBooksList = () => {
       const docRef = doc(db, "books", id);
       await updateDoc(docRef, {
         userId: "",
+        status: "dostępna",
       });
       getBooksByUserId();
     };

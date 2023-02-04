@@ -2,14 +2,12 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { db } from "../../Api/firebase.js";
 import { doc, getDoc } from "firebase/firestore";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import styles from "./BookDetails.module.css";
+import { AddBookToUserButton } from "../../components/UserBooks/AddBookToUserButton/AddBookToUserButton.jsx";
 
 export const BookDetails = () => {
   const params = useParams();
   const [book, setBook] = useState([]);
-  const notify = () => toast.success("Added to Your Library");
 
   function getBooksById(id) {
     const docRef = doc(db, "books", id);
@@ -40,14 +38,28 @@ export const BookDetails = () => {
         <img src={book.image} alt="cover img" />{" "}
         <ul className={styles.info_list}>
           <li>
-            <p>Tytuł: {book.title}</p>
-
+            <p>
+              <strong>Tytuł: </strong>
+              {book.title}
+            </p>
           </li>
           <li>
-            <p>Autor: {book.author}</p>
+            <p>
+              <strong>Autor: </strong>
+              {book.author}
+            </p>
           </li>
           <li>
-            <p>Status: {book.status}</p>
+            <p>
+              <strong>Gatunek: </strong>
+              {book.genre}
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Status: </strong>
+              {book.status}
+            </p>
           </li>
         </ul>
       </section>
@@ -56,28 +68,7 @@ export const BookDetails = () => {
         <p>{book.description}</p>
       </section>
       <div className={styles.button_wrapper}>
-        <button
-          onClick={book.status === "avaliable" ? notify : null}
-          className={styles.button}
-        >
-          {book.status === "avaliable"
-
-            ? "Wypożycz książkę"
-            : "Książka chwilowo niedostępna"}
-
-        </button>
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss={false}
-          draggable
-          pauseOnHover={false}
-          theme="light"
-        />
+        <AddBookToUserButton book={book} />
       </div>
     </div>
   );
