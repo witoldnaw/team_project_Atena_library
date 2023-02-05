@@ -57,10 +57,10 @@ export const BookDetails = () => {
       </section>
       <div className={styles.button_wrapper}>
         <button
-          onClick={book.status === "avaliable" ? notify : null}
+          onClick={book.status === "dostępna" ? notify : null}
           className={styles.button}
         >
-          {book.status === "avaliable"
+          {book.status === "dostępna"
 
             ? "Wypożycz książkę"
             : "Książka chwilowo niedostępna"}
