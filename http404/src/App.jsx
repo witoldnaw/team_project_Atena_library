@@ -11,7 +11,7 @@ import { userDataContext } from "./components/UserDataContext/UserDataContext";
 import SearchingSite from "./view/SearchingSite/SearchingSite";
 import Footer from "./components/Layout/Footer/Footer";
 import { Profile } from "./view/Auth/Profile/Profile";
-import { Admin } from "./view/Admin/Admin";
+import { AddBooks } from "./view/Admin/AddBooks";
 
 function App() {
   const { user, role } = useContext(userDataContext);
@@ -26,12 +26,12 @@ function App() {
           <Route path="auth/login" element={<Login />} />
           <Route path="auth/profile" element={<Profile />} />
           <Route path="auth/forgot-password" element={<ForgotPassword />} />
-          <Route path="admin" element={<Admin/>} />
+          <Route path="admin" element={<AddBooks/>} />
           <Route path="/searching" element={<SearchingSite />} />
           <Route path="/:bookTitle/:bookId" element={<BookDetails />} />
           <Route
             path="auth/admin"
-            element={user ? <Profile /> : <Navigate to="/auth/login" />}
+            element={role ? <AddBooks /> : <Navigate to="/auth/login" />}
           />
         </Routes>
         <Footer />
