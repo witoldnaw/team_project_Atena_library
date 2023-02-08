@@ -1,10 +1,31 @@
+:root {
+    background-color: var(--Dark-cream);
+}
+
+
 .formAdminWrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-bottom: 4vw;
 }
 
+.h2 {
+    color: var(--Orange);
+    margin: 4vw 0 2vw 12vw;
+    font-size: 1.7rem;
+}
+
+.adminWrapper {
+    display: flex;
+    background-color: var(--Cream);
+}
+
+.illustration {
+    width: 52%;
+    height: auto;
+}
 
 .status {
     width: 2vw;
@@ -35,28 +56,32 @@ option {
     background-color: rgb(255, 247, 238);
 }
 
-
 .input {
     width: 30vw;
     height: 2vw;
 }
 
-
 .booksWrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    justify-items: center;
+    justify-items: left;
     align-items: center;
     margin-bottom: 1.5vw;
-    background-color: #fff;
+    background-color: var(--Cream);
 }
+
 .booksWrapper img {
     grid-column: 1 / 2;
     grid-row: 1 / 4;
-    display: flex;
-    flex-direction: column;
-    width: 5vw;
+    height: 90%;
+    /* width: 5vw; */
+    margin-left: 10vw;
+}
+
+.booksWrapper p {
+color: var(--Dark-cyan);
+font-size: 1.2rem;
 }
 
 .bookTitle {
@@ -78,6 +103,7 @@ option {
 .btnDelete{
     grid-column: 3 / 4;
     grid-row: 2 / 3;
+    margin-left: 12vw;
 }
 
 .btnEdit{
@@ -85,12 +111,27 @@ option {
     grid-row: 2 / 3;
 }
 
+#btn {
+    width: 10vw;
+    height: 3vw;
+    background-color: var(--Orange);
+    border-style: none;
+    border-radius: 20px;
+    color: var(--Dark-cream);
+    font-size: 1.1rem;
+}
+
+.btn:hover {
+    opacity: 0.6;
+}
+
 .modalWrapper {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        /* justify-content: center;
         align-items: center;
-        text-align:center;
+        text-align:center; */
         background-color: var(--Dark-cream);
         padding: 3vw;
     }

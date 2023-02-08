@@ -10,11 +10,10 @@ import {
 } from "firebase/firestore";
 import { toast } from "react-toastify";
 import styles from "./Admin.module.css";
-import Modal from "react-modal";
+import { Modal } from "@mui/material";
 
 export const Edit = () => {
-  let subtitle;
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [selectedBookIndex, setSelectedBookIndex] = useState(null);
   const [Editbooks, setEditBooks] = useState([]);
   const [title, setNewTitle] = useState();
   const [author, setNewAuthor] = useState();
@@ -22,6 +21,10 @@ export const Edit = () => {
   const [status, setNewStatus] = useState();
   const [image, setNewImage] = useState();
   const [genres, setNewGenres] = useState();
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false)
+
 
   const handleDelete = (id) => {
     const docRef = doc(db, "books", id);
@@ -36,32 +39,6 @@ export const Edit = () => {
       });
     id.preventDefault();
   };
-
-  const customStyles = {
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-      display: "flex",
-      height: "90%",
-      backgroundColor: "transparent"
-    },
-  };
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    subtitle.style.color = "transparent";
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
 
   const getData = () => {
     const itemsCollection = collection(db, "books");
@@ -78,8 +55,10 @@ export const Edit = () => {
     getData();
   }, []);
 
+
   const handleUpdate = (id) => {
     const docRef = doc(db, "books", id);
+    
     getDoc(docRef).then((doc) => {
       if (doc.exists) {
         const updates = {
@@ -90,7 +69,7 @@ export const Edit = () => {
           image: image || doc.data().image,
           genres: genres || doc.data().genres,
         };
-        updateDoc(docRef, updates)
+        updateDoc(docRef, updates, id)
           .then(() => {
             toast.success("Title has been updated successfully.");
           })
@@ -102,6 +81,7 @@ export const Edit = () => {
   };
   return (
     <>
+    <h2 className={styles.h2}>Zarządzaj książkami w bibliotece:</h2>
         {Editbooks.map((item, index) => (
           <>
             <div className={styles.booksWrapper}>
@@ -109,25 +89,22 @@ export const Edit = () => {
             <p className={styles.bookTitle} >{item.title}</p>
             <p className={styles.bookAuthor} >{item.author}</p>
             <p className={styles.bookStatus} >{item.status} </p>
-            <button classname={styles.btnDelete} onClick={() => { handleDelete(item.id)}}>Usuń</button>
-            <button classname={styles.btnEdit} onClick={openModal}>Edytuj</button>
+            <button className={styles.btnDelete} id={styles.btn} onClick={() => { handleDelete(item.id)}}>Usuń</button>
+            <button className={styles.btnEdit} id={styles.btn}  onClick={() => {handleOpen(index)}}>Edytuj</button>
             </div>
             <Modal
-              isOpen={modalIsOpen}
-              onAfterOpen={afterOpenModal}
-              onRequestClose={closeModal}
-              style={customStyles}
+              open={open}
+              onClose={handleClose}
               contentLabel="Example Modal"
             >
               <div className={styles.modalWrapper}>
               <label className={styles.labelWrapper} htmlFor="Tytuł">Tytuł:</label>
               <input
                 className={styles.input}
-                key={`title-${index}`}
                 type="text"
                 name="title"
                 value={title}
-                onChange={(e) => setNewTitle(e.target.value, index)}
+                onChange={(e) => setNewTitle(e.target.value)}
               />
 
 <label  className={styles.labelWrapper} htmlFor="author">Autor:</label>
@@ -153,6 +130,7 @@ export const Edit = () => {
               <label  className={styles.labelWrapper} htmlFor="status">Niedostępna</label>
               <input
                 className={styles.input}
+                key={item.status}
                 type="radio"
                 name="status"
                 value="niedostępna"
@@ -165,6 +143,7 @@ export const Edit = () => {
                 className={styles.input}
                 type="radio"
                 name="status"
+                key={item.statuss}
                 value="dostępna"
                 checked={status === "dostępna"}
                 onChange={(e) => setNewStatus(e.target.value)}
@@ -185,6 +164,7 @@ export const Edit = () => {
                 className={styles.input}
                 id="genres"
                 name="genres"
+                key={item.genres}
                 onChange={(e) => setNewGenres(e.target.value)}
               >
                 <option value={genres}></option>
@@ -199,9 +179,10 @@ export const Edit = () => {
                 <option value="thiller">Thiller</option>
                 <option value="literatura piękna">Literatura piękna</option>
               </select>
-
-              <button onClick={() => { handleUpdate(item.id)}}>Wyślij zmiany</button>
-              <button onClick={closeModal}>Zamknij</button>
+             { console.log(item.id)}
+              <button id={styles.btn}  onClick={() => { handleUpdate(item.id)}}>Wyślij zmiany</button>
+              <br></br>
+              <button id={styles.btn}  onClick={handleClose}>Zamknij</button>
               </div>
             </Modal>
             </>

@@ -12,8 +12,11 @@ import SearchingSite from "./view/SearchingSite/SearchingSite";
 import Footer from "./components/Layout/Footer/Footer";
 import { Profile } from "./view/Auth/Profile/Profile";
 import { AddBooks } from "./view/Admin/AddBooks";
+import Modal from "react-modal";
 
 function App() {
+
+Modal.setAppElement(document.getElementById("root"));
   const { user, role } = useContext(userDataContext);
 
   return (

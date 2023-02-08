@@ -3,6 +3,7 @@ import { db } from "../../Api/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import styles from "./Admin.module.css"
 import { Edit } from "./Edit";
+import illustration from "./illustration_boywithbook_admin.png"
 
 export const AddBooks = () => {
   const colRef = collection(db, "books");
@@ -41,10 +42,10 @@ export const AddBooks = () => {
 
   return (
     <>
-      <h2>Formularz dodawania ksiązek</h2>
-
+      <h2 className={styles.h2}>Panel administratora</h2>
+<div className={styles.adminWrapper}>
       <form className={styles.formAdminWrapper} onSubmit={handleSubmit}>
-        <label htmlFor="title">Title:</label>
+        <label htmlFor="title">Tytuł:</label>
         <input
           type="text"
           name="title"
@@ -53,7 +54,7 @@ export const AddBooks = () => {
           required
         />
 
-        <label htmlFor="author">Author:</label>
+        <label htmlFor="author">Autor:</label>
         <input
           type="text"
           name="author"
@@ -80,8 +81,7 @@ export const AddBooks = () => {
           required
         />
 
-
-<label htmlFor="genres">Gatunek</label>
+<label htmlFor="genres">Kategoria</label>
 <select id="genres" name="genres" onChange={(e) => setGenres(e.target.value)}
           required>
     <option value="kryminał">Kryminał</option>
@@ -115,8 +115,10 @@ export const AddBooks = () => {
         />
 </div>
         <br />
-        <button>dodaj ksiazke</button>
+        <button id={styles.btn}>Dodaj książkę</button>
         </form>
+        <img className={styles.illustration} src={illustration} alt="illustrartion man with book"></img>
+</div>
         <Edit/>
         </>
   )
