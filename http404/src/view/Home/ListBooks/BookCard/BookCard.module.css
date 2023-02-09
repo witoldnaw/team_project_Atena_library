@@ -55,8 +55,9 @@ a {
 
 .card:hover .cardOption {
   width: 10rem;
-  height: 2.5rem;
+  min-height: 2.5rem;
   margin: 1rem;
+  padding: 0.3rem;
   background-color: var(--Dark-cream);
   border-color: var(--Orange);
   border-style: solid;
@@ -69,8 +70,9 @@ a {
 }
 .card:hover .cardOption:hover {
   width: 10rem;
-  height: 2.5rem;
+  min-height: 2.5rem;
   margin: 1rem;
+  padding: 0.3rem;
   background-color: var(--Orange);
   border-style: none;
   border-radius: 1.5rem;
@@ -78,4 +80,14 @@ a {
   font-size: 1.1rem;
   font-weight: bold;
   font-family: "Nunito Sans", sans-serif;
+}
+
+.card:hover .cardOption:disabled {
+  opacity: 0.9;
+  background-color: var(--Very-dark-blue);
+  border-style: none;
+  border-radius: 1.5rem;
+  color: var(--Dark-cream);
+  font-weight: normal;
+  font-size: 0.9rem;
 }

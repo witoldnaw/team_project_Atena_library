@@ -4,9 +4,8 @@ import { db } from "../../../Api/firebase";
 import { doc, updateDoc } from "firebase/firestore";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import styles from "./AddBookToUserButton.module.css";
 
-export const AddBookToUserButton = ({ book }) => {
+export const AddBookToUserButton = ({ book, buttonStyle }) => {
   const { userData } = useContext(userDataContext);
   const [isDisabled, setIsDisabled] = useState();
   const notify = () => toast.success("Dodano do Biblioteki");
@@ -33,7 +32,7 @@ export const AddBookToUserButton = ({ book }) => {
     <>
       <button
         disabled={isDisabled}
-        className={styles.button}
+        className={buttonStyle}
         onClick={handleClick}
       >
         {isDisabled === false

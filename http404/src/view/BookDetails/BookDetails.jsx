@@ -68,8 +68,7 @@ export const BookDetails = () => {
         <p>{book.description}</p>
       </section>
       <div className={styles.button_wrapper}>
-        <AddBookToUserButton book={book} />
-
+        <AddBookToUserButton buttonStyle={styles.addButton} book={book} />
       </div>
     </div>
   );
