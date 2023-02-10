@@ -34,6 +34,7 @@ export const BookDetails = () => {
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.title}>{book.title}</h1>
+    <div className={styles.infoWrapper}>
       <section className={styles.book_info}>
         <img src={book.image} alt="cover img" />{" "}
         <ul className={styles.info_list}>
@@ -63,6 +64,7 @@ export const BookDetails = () => {
           </li>
         </ul>
       </section>
+      </div>
       <section className={styles.book_description}>
         <h3>Opis:</h3>
         <p>{book.description}</p>
