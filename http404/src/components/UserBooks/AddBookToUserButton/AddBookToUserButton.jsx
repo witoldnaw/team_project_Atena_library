@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { userDataContext } from "../../UserDataContext/UserDataContext";
 import { db } from "../../../Api/firebase";
 import { doc, updateDoc } from "firebase/firestore";
@@ -8,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 export const AddBookToUserButton = ({ book, buttonStyle }) => {
   const { userData } = useContext(userDataContext);
   const [isDisabled, setIsDisabled] = useState();
+  const navigate = useNavigate();
   const notify = () => toast.success("Dodano do Biblioteki");
 
   useEffect(() => {
@@ -22,7 +24,13 @@ export const AddBookToUserButton = ({ book, buttonStyle }) => {
     });
   };
 
+  console.log(userData);
+
   const handleClick = () => {
+    userData ? addBook() : navigate("/auth/login");
+  };
+
+  const addBook = () => {
     assignUserBook();
     notify();
     setIsDisabled(true);
