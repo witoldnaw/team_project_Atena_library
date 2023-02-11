@@ -5,6 +5,11 @@ import styles from "./Navigation.module.css";
 import logo from "./atena_logo1.png";
 import avatar from "./atena_avatar1.png";
 
+const signOutReload = () => {
+  signOut(auth);
+  window.location.reload(true);
+};
+
 const Navigation = ({ user }) => {
   return (
     <nav className={styles.navigation}>
@@ -35,7 +40,7 @@ const Navigation = ({ user }) => {
           {user && (
             <>
               <Link to="/">
-                <button onClick={() => signOut(auth)}>Wyloguj się</button>
+                <button onClick={signOutReload}>Wyloguj się</button>
               </Link>
               <div className={styles.avatarWrapper}>
                 <Link to="auth/profile">
