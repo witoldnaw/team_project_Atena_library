@@ -13,6 +13,8 @@ import Footer from "./components/Layout/Footer/Footer";
 import { Profile } from "./view/Auth/Profile/Profile";
 import { AddBooks } from "./view/Admin/AddBooks";
 import Modal from "react-modal";
+import { ToastContainer } from "react-toastify";
+
 
 function App() {
 
@@ -38,6 +40,18 @@ Modal.setAppElement(document.getElementById("root"));
           />
           <Route path="/auth/login/przypomnijhaslo" element={<ForgotPassword/>} />
         </Routes>
+        <ToastContainer
+          position="top-right"
+          autoClose={1000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover={false}
+          theme="light"
+        />
         <Footer />
       </BrowserRouter>
     </div>

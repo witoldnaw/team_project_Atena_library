@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { Profile } from "../../../Auth/Profile/Profile"
+import { Profile } from "../../../Auth/Profile/Profile";
 import styles from "./BookCard.module.css";
+import { AddBookToUserButton } from "../../../../components/UserBooks/AddBookToUserButton/AddBookToUserButton";
 
 const BookCard = ({ book, user }) => {
   return (
@@ -13,9 +14,9 @@ const BookCard = ({ book, user }) => {
           {user ? (
             <Profile />
           ) : (
-            <Link to="/auth/profile">
-              <button className={styles.cardOption}>Wypożycz</button>
-            </Link>
+            // <Link to="/auth/profile">
+            <AddBookToUserButton buttonStyle={styles.cardOption} book={book} />
+            // {/* </Link> */}
           )}
         </div>
         <div className={styles.cardMedia}>

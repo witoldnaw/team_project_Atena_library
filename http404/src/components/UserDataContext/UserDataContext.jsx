@@ -7,42 +7,35 @@ import { doc, onSnapshot } from "firebase/firestore";
 export const userDataContext = createContext();
 
 export const UserDataProvider = (props) => {
-
   const [userData, setUserData] = useState(false);
-  const [ role, setRole] = useState("user");
-  const [ user, setUser] = useState(null)
+  const [role, setRole] = useState("user");
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      console.log(user, auth)
-        if (user) {
-            const userRef = doc(db, "users", user.uid);
-            console.log(user.uid)
-            onSnapshot(userRef, userSnapshot => {
-                const data = userSnapshot.data();
-                console.log(userSnapshot)
-                if (!data) {
-                    return;
-                }
-                console.log(user)
-                console.log(data)
-                setUser(user);
-                setUserData({ id: userSnapshot.id, ...data });
-                data.isAdmin ? setRole("admin") : setRole("user");
-            })
-        } else {
-            setUser(null);
-        }
-    });
-}, []);
+      if (user) {
+        const userRef = doc(db, "users", user.uid);
 
-  console.log(userData)
+        onSnapshot(userRef, (userSnapshot) => {
+          const data = userSnapshot.data();
+
+          if (!data) {
+            return;
+          }
+
+          setUser(user);
+          setUserData({ id: userSnapshot.id, ...data });
+          data.isAdmin ? setRole("admin") : setRole("user");
+        });
+      } else {
+        setUser(null);
+      }
+    });
+  }, []);
+
   return (
-    <userDataContext.Provider value={{ role, user, setUser}}>
+    <userDataContext.Provider value={{ role, user, setUser, userData }}>
       {props.children}
     </userDataContext.Provider>
   );
 };
-
-
-

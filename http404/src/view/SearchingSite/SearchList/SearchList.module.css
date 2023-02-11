@@ -36,21 +36,20 @@
   border-color: var(--Very-dark-blue);
   padding: 0.4rem;
   padding-left: 1.5rem;
-  border-radius: 1.5rem;
+  border-radius: 2rem;
   margin-bottom: 3rem;
 }
 
 .SearchButton {
-  width: 12rem;
-  height: 3rem;
+  width: 20rem;
+  height: 4rem;
   margin: 1.5rem;
   border-color: var(--Orange);
-  border-radius: 1.5rem;
+  border-radius: 2rem;
   background-color: var(--Orange);
-  color: var(--Dark-cream);
+  color: var(--Cream);
   font-size: 2rem;
   font-family: "Nunito Sans", sans-serif;
-  font-weight: bold;
   margin-bottom: 3rem;
 }
 

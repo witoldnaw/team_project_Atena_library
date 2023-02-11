@@ -5,35 +5,45 @@ import BookCard from "./BookCard/BookCard";
 import styles from "./ListBooks.module.css";
 import ReactPaginate from "react-paginate";
 
-const ListBooks = () => {
+const ListBooks = ({ selectedGenre, currentPage, onPageChange }) => {
+  console.log(`selected Genres:`, selectedGenre);
+
   const [books, setBooks] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const limit = 3;
+
+  const pageSize = 6;
   const [totalPages, setTotalPages] = useState(1);
 
   const getBooks = () => {
-    const startIndex = (currentPage - 1) * limit;
     const booksCollection = collection(db, "books");
     getDocs(booksCollection).then((querySnapshot) => {
-      const books = querySnapshot.docs
-        .map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }))
-        .slice(startIndex, startIndex + limit);
-      console.log(books);
-      setBooks(books);
-      setTotalPages(Math.ceil(querySnapshot.size / limit));
+      const allBooks = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      console.log(`wszytskie książki`, allBooks);
+      const filteredBooks = allBooks.filter((book) => {
+        if (selectedGenre.id === "allGenres") {
+          return true;
+        }
+        if (book.genre) {
+          return book.genre.toLowerCase() === selectedGenre.name.toLowerCase();
+        } else {
+          return false;
+        }
+      });
+      console.log(`przefiltrowane książki`, filteredBooks);
+      const startIndex = currentPage * pageSize;
+      const booksOnPage = filteredBooks.slice(startIndex, startIndex + pageSize);
+
+      console.log(`książki na stronie`, booksOnPage);
+      setBooks(booksOnPage);
+      setTotalPages(Math.ceil(filteredBooks.length / pageSize));
     });
   };
 
   useEffect(() => {
     getBooks();
-  }, [currentPage]);
-
-  const handlePageChange = (data) => {
-    setCurrentPage(data.selected + 1);
-  };
+  }, [currentPage, selectedGenre]);
 
   return (
     <div className={styles.listBookWrapper}>
@@ -51,10 +61,11 @@ const ListBooks = () => {
           pageCount={totalPages}
           marginPagesDisplayed={2}
           pageRangeDisplayed={10}
-          onPageChange={handlePageChange}
+          onPageChange={onPageChange}
           containerClassName={"pagination"}
           subContainerClassName={"pages pagination"}
           activeClassName={"active"}
+          forcePage={currentPage}
         />
       </div>
     </div>
