@@ -1,5 +1,7 @@
-import styles from "./Form.module.css";
-import picture from "./illustration_atena_login.png";
+import styles from "./Form.module.css"
+import picture from "./illustration_atena_login.png"
+import { Link } from "react-router-dom"
+  
 
 export const FormLogin = ({
   submitText,
@@ -19,6 +21,11 @@ export const FormLogin = ({
           <input type="password" name="password" id="password" />
         </div>
       )}
+        <Link to="przypomnijhaslo">
+        <div className={styles.linkToForgotPassword}>
+          <p>zapomniałeś hasła? </p>
+        </div>
+        </Link>
       <div className={styles.btnWrapper}>
         <button className={styles.btnForm}>{submitText}</button>
       </div>
