@@ -1,63 +1,41 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { db } from "../../../src/Api/firebase";
 import {
-  collection,
-  getDocs,
   doc,
   updateDoc,
   getDoc,
   deleteDoc,
 } from "firebase/firestore";
 import { toast } from "react-toastify";
-import styles from "./Admin.module.css";
 import { Modal } from "@mui/material";
-import SearchingSite from "../SearchingSite/SearchingSite";
+import styles from "./Admin.module.css";
 
-export const Edit = () => {
-  // const [selectedBookIndex, setSelectedBookIndex] = useState(null);
-  const [books, setEditBooks] = useState([]);
-  const [title, setNewTitle] = useState();
-  const [author, setNewAuthor] = useState();
-  const [description, setNewDescription] = useState();
-  const [status, setNewStatus] = useState();
+export const AdminPanelListItem = ({book, getData}) => {
+  const [title, setNewTitle] = useState(book.title);
+  const [author, setNewAuthor] = useState(book.author);
+  const [description, setNewDescription] = useState(book.description);
+  const [status, setNewStatus] = useState(book.status);
   const [image, setNewImage] = useState();
-  const [genre, setNewGenre] = useState();
+  const [genre, setNewGenre] = useState(book.genre);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false)
   
-  const handleDelete = (id) => {
-    const docRef = doc(db, "books", id);
+  const handleDelete = () => {
+    const docRef = doc(db, "books", book.id);
 
     deleteDoc(docRef)
       .then(() => {
         toast.success("Ksiązka usunięta!");
-        setEditBooks((prevBooks) => prevBooks.filter((book) => book.id !== id));
+        getData()
       })
       .catch((error) => {
         console.log(error);
       });
-    id.preventDefault();
   };
 
-  const getData = () => {
-    const itemsCollection = collection(db, "books");
-    getDocs(itemsCollection).then((querySnapshot) => {
-      const books = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setEditBooks(books);
-    });
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
-
-
-  const handleUpdate = (id) => {
-    const docRef = doc(db, "books", id);
+  const handleUpdate = () => {
+    const docRef = doc(db, "books", book.id);
     
     getDoc(docRef).then((doc) => {
       if (doc.exists) {
@@ -69,9 +47,11 @@ export const Edit = () => {
           image: image || doc.data().image,
           genres: genre || doc.data().genre,
         };
-        updateDoc(docRef, updates, id)
+        updateDoc(docRef, updates, book.id)
           .then(() => {
+            handleClose()
             toast.success("Title has been updated successfully.");
+            getData()
           })
           .catch((error) => {
             console.log(error);
@@ -80,18 +60,14 @@ export const Edit = () => {
     });
   };
   return (
-    <>
-    <h2 className={styles.h2}>Zarządzaj książkami w bibliotece:</h2>
-        {books.map((item) => (
           <>
-          {console.log(item)}
             <li className={styles.listBooksWrapper}>
-            <img src={item.image} alt="okładka ksiązki" style={{width:"10vw"}}></img>
-            <p className={styles.bookTitle} >{item.title}</p>
-            <p className={styles.bookAuthor} >{item.author}</p>
-            <p className={styles.bookStatus} >{item.status} </p>
-            <button className={styles.btnDelete} id={styles.buttonAppearance} onClick={() => { handleDelete(item.id)}}>Usuń</button>
-            <button className={styles.btnEdit} id={styles.buttonAppearance}  onClick={() => {handleOpen(item.id)}}>Edytuj</button>
+            <img src={book.image} alt="okładka ksiązki" style={{width:"10vw"}}></img>
+            <p className={styles.bookTitle} >{book.title}</p>
+            <p className={styles.bookAuthor} >{book.author}</p>
+            <p className={styles.bookStatus} >{book.status} </p>
+            <button className={styles.btnDelete} id={styles.buttonAppearance} onClick={handleDelete}>Usuń</button>
+            <button className={styles.btnEdit} id={styles.buttonAppearance}  onClick={handleOpen}>Edytuj</button>
             </li>
             <Modal
               open={open}
@@ -111,7 +87,7 @@ export const Edit = () => {
               <label htmlFor="author">Autor:</label>
               <input
                 className={styles.input}
-                key={item.author}
+                key={book.author}
                 type="text"
                 name="author"
                 value={author}
@@ -121,7 +97,7 @@ export const Edit = () => {
               <label htmlFor="description">Opis:</label>
               <input
                 className={styles.input}
-                key={item.description}
+                key={book.description}
                 type="text"
                 name="description"
                 value={description}
@@ -131,7 +107,7 @@ export const Edit = () => {
               <label htmlFor="status">Niedostępna</label>
               <input
                 className={styles.input}
-                key={item.status}
+                key={book.status}
                 type="radio"
                 name="status"
                 value="niedostępna"
@@ -144,7 +120,7 @@ export const Edit = () => {
                 className={styles.input}
                 type="radio"
                 name="status"
-                key={item.statuss}
+                key={book.statuss}
                 value="dostępna"
                 checked={status === "dostępna"}
                 onChange={(e) => setNewStatus(e.target.value)}
@@ -153,9 +129,9 @@ export const Edit = () => {
               <label htmlFor="imageurl">Zdjęcie ksiązki:</label>
               <input
                 className={styles.input}
-                key={item.imageURL}
+                key={book.imageURL}
                 type="text"
-                placeholder={item.imageURL}
+                placeholder={book.imageURL}
                 name="imageURL"
                 value={image}
                 onChange={(e) => setNewImage(e.target.value)}
@@ -165,10 +141,10 @@ export const Edit = () => {
                 className={styles.input}
                 id="genres"
                 name="genres"
-                key={item.genres}
+                key={book.genres}
+                value={genre}
                 onChange={(e) => setNewGenre(e.target.value)}
               >
-                <option value={genre}></option>
                 <option value="kryminał">Kryminał</option>
                 <option value="lektura szkolna">Lektura szkolna</option>
                 <option value="poradnik">Poradnik</option>
@@ -180,15 +156,12 @@ export const Edit = () => {
                 <option value="thiller">Thiller</option>
                 <option value="literatura piękna">Literatura piękna</option>
               </select>
-              { console.log(item.id)}
-              <button id={styles.buttonAppearance}  onClick={() => { handleUpdate(item.id)}}>Wyślij zmiany</button>
-
+              { console.log(book.id)}
+              <button id={styles.buttonAppearance}  onClick={() => { handleUpdate(book.id)}}>Wyślij zmiany</button>
               <button id={styles.buttonAppearance}  onClick={handleClose}>Zamknij</button>
               </div>
             </Modal>
-            {/* <SearchingSite/> */}
             </>
-        ))}
-    </>
-  );
-};
+        )}
+
+

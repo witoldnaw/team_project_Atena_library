@@ -22,7 +22,7 @@ Modal.setAppElement(document.getElementById("root"));
   return (
     <div className="App">
       <BrowserRouter>
-        <Navigation user={user} />
+        <Navigation user={user} role={role} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="auth/register" element={<Register />} />
