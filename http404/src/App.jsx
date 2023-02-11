@@ -11,6 +11,7 @@ import { userDataContext } from "./components/UserDataContext/UserDataContext";
 import SearchingSite from "./view/SearchingSite/SearchingSite";
 import Footer from "./components/Layout/Footer/Footer";
 import { Profile } from "./view/Auth/Profile/Profile";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const { user, role } = useContext(userDataContext);
@@ -32,6 +33,18 @@ function App() {
             element={user ? <Profile /> : <Navigate to="/auth/login" />}
           />
         </Routes>
+        <ToastContainer
+          position="top-right"
+          autoClose={1000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover={false}
+          theme="light"
+        />
         <Footer />
       </BrowserRouter>
     </div>

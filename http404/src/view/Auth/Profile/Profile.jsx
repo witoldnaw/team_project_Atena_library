@@ -9,35 +9,35 @@ export const Profile = () => {
   const { userData } = useContext(userDataContext);
   return (
     <>
-      <section className={styles.user_profile}>
-        <img className={styles.user_picture} src={avatar} alt="user avatar" />
-        <div>
-          <ul className={styles.user_text}>
-            <li>
-              <h2>
-                {userData.name} {userData.surname}
-              </h2>
-            </li>
-            <li>
-              <p>{userData.description}</p>
-            </li>
-            <li className={styles.contact}>
-              <p>{userData.email}</p>
-            </li>
-          </ul>
-        </div>
-      </section>
+      <div className={styles.userWrapper}>
+        <section className={styles.user_profile}>
+          <img className={styles.user_picture} src={avatar} alt="user avatar" />
+          <div>
+            <ul className={styles.user_text}>
+              <li>
+                <h2>
+                  {userData.name} {userData.surname}
+                </h2>
+              </li>
+              <li>
+                <p>{userData.description}</p>
+              </li>
+              <li className={styles.contact}>
+                <p>{userData.email}</p>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+      <h2 className={styles.user_shelf}>Twoja Półka:</h2>
       <section className={styles.user_books}>
-        <h2 className={styles.user_shelf}>Twoja Półka:</h2>
-        <ul className={styles.books}>
-          <UserBooksList />
-        </ul>
-        <div className={styles.button_wrapper}>
-          <Link to="/searching">
-            <button className={styles.button}>Wypożycz kolejną książkę</button>
-          </Link>
-        </div>
+        <UserBooksList />
       </section>
+      <div className={styles.button_wrapper}>
+        <Link to="/searching">
+          <button className={styles.button}>Wypożycz kolejną książkę</button>
+        </Link>
+      </div>
     </>
   );
 };
