@@ -21,7 +21,7 @@ export const Edit = () => {
   const [description, setNewDescription] = useState();
   const [status, setNewStatus] = useState();
   const [image, setNewImage] = useState();
-  const [genres, setNewGenres] = useState();
+  const [genre, setNewGenre] = useState();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false)
@@ -67,7 +67,7 @@ export const Edit = () => {
           description: description || doc.data().description,
           status: status || doc.data().status,
           image: image || doc.data().image,
-          genres: genres || doc.data().genres,
+          genres: genre || doc.data().genre,
         };
         updateDoc(docRef, updates, id)
           .then(() => {
@@ -166,9 +166,9 @@ export const Edit = () => {
                 id="genres"
                 name="genres"
                 key={item.genres}
-                onChange={(e) => setNewGenres(e.target.value)}
+                onChange={(e) => setNewGenre(e.target.value)}
               >
-                <option value={genres}></option>
+                <option value={genre}></option>
                 <option value="kryminał">Kryminał</option>
                 <option value="lektura szkolna">Lektura szkolna</option>
                 <option value="poradnik">Poradnik</option>
