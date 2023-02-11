@@ -11,10 +11,11 @@ import {
 import { toast } from "react-toastify";
 import styles from "./Admin.module.css";
 import { Modal } from "@mui/material";
+import SearchingSite from "../SearchingSite/SearchingSite";
 
 export const Edit = () => {
-  const [selectedBookIndex, setSelectedBookIndex] = useState(null);
-  const [Editbooks, setEditBooks] = useState([]);
+  // const [selectedBookIndex, setSelectedBookIndex] = useState(null);
+  const [books, setEditBooks] = useState([]);
   const [title, setNewTitle] = useState();
   const [author, setNewAuthor] = useState();
   const [description, setNewDescription] = useState();
@@ -24,14 +25,13 @@ export const Edit = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false)
-
-
+  
   const handleDelete = (id) => {
     const docRef = doc(db, "books", id);
 
     deleteDoc(docRef)
       .then(() => {
-        toast.success("Entire Document has been deleted successfully.");
+        toast.success("Ksiązka usunięta!");
         setEditBooks((prevBooks) => prevBooks.filter((book) => book.id !== id));
       })
       .catch((error) => {
@@ -82,23 +82,24 @@ export const Edit = () => {
   return (
     <>
     <h2 className={styles.h2}>Zarządzaj książkami w bibliotece:</h2>
-        {Editbooks.map((item, index) => (
+        {books.map((item) => (
           <>
-            <div className={styles.booksWrapper}>
+          {console.log(item)}
+            <li className={styles.listBooksWrapper}>
             <img src={item.image} alt="okładka ksiązki" style={{width:"10vw"}}></img>
             <p className={styles.bookTitle} >{item.title}</p>
             <p className={styles.bookAuthor} >{item.author}</p>
             <p className={styles.bookStatus} >{item.status} </p>
-            <button className={styles.btnDelete} id={styles.btn} onClick={() => { handleDelete(item.id)}}>Usuń</button>
-            <button className={styles.btnEdit} id={styles.btn}  onClick={() => {handleOpen(index)}}>Edytuj</button>
-            </div>
+            <button className={styles.btnDelete} id={styles.buttonAppearance} onClick={() => { handleDelete(item.id)}}>Usuń</button>
+            <button className={styles.btnEdit} id={styles.buttonAppearance}  onClick={() => {handleOpen(item.id)}}>Edytuj</button>
+            </li>
             <Modal
               open={open}
               onClose={handleClose}
               contentLabel="Example Modal"
             >
               <div className={styles.modalWrapper}>
-              <label className={styles.labelWrapper} htmlFor="Tytuł">Tytuł:</label>
+              <label htmlFor="Tytuł">Tytuł:</label>
               <input
                 className={styles.input}
                 type="text"
@@ -107,7 +108,7 @@ export const Edit = () => {
                 onChange={(e) => setNewTitle(e.target.value)}
               />
 
-<label  className={styles.labelWrapper} htmlFor="author">Autor:</label>
+              <label htmlFor="author">Autor:</label>
               <input
                 className={styles.input}
                 key={item.author}
@@ -117,7 +118,7 @@ export const Edit = () => {
                 onChange={(e) => setNewAuthor(e.target.value)}
               />
 
-<label className={styles.labelWrapper} htmlFor="description">Opis:</label>
+              <label htmlFor="description">Opis:</label>
               <input
                 className={styles.input}
                 key={item.description}
@@ -127,7 +128,7 @@ export const Edit = () => {
                 onChange={(e) => setNewDescription(e.target.value)}
               />
 
-              <label  className={styles.labelWrapper} htmlFor="status">Niedostępna</label>
+              <label htmlFor="status">Niedostępna</label>
               <input
                 className={styles.input}
                 key={item.status}
@@ -138,7 +139,7 @@ export const Edit = () => {
                 onChange={(e) => setNewStatus(e.target.value)}
               />
 
-              <label className={styles.labelWrapper} htmlFor="status">Dostępna</label>
+              <label htmlFor="status">Dostępna</label>
               <input
                 className={styles.input}
                 type="radio"
@@ -149,7 +150,7 @@ export const Edit = () => {
                 onChange={(e) => setNewStatus(e.target.value)}
               />
 
-<label className={styles.labelWrapper} htmlFor="imageurl">Zdjęcie ksiązki:</label>
+              <label htmlFor="imageurl">Zdjęcie ksiązki:</label>
               <input
                 className={styles.input}
                 key={item.imageURL}
@@ -159,7 +160,7 @@ export const Edit = () => {
                 value={image}
                 onChange={(e) => setNewImage(e.target.value)}
               />
-<label className={styles.labelWrapper} htmlFor="gatunek">Gatunek:</label>
+                <label htmlFor="gatunek">Gatunek:</label>
               <select
                 className={styles.input}
                 id="genres"
@@ -179,12 +180,13 @@ export const Edit = () => {
                 <option value="thiller">Thiller</option>
                 <option value="literatura piękna">Literatura piękna</option>
               </select>
-             { console.log(item.id)}
-              <button id={styles.btn}  onClick={() => { handleUpdate(item.id)}}>Wyślij zmiany</button>
-              <br></br>
-              <button id={styles.btn}  onClick={handleClose}>Zamknij</button>
+              { console.log(item.id)}
+              <button id={styles.buttonAppearance}  onClick={() => { handleUpdate(item.id)}}>Wyślij zmiany</button>
+
+              <button id={styles.buttonAppearance}  onClick={handleClose}>Zamknij</button>
               </div>
             </Modal>
+            {/* <SearchingSite/> */}
             </>
         ))}
     </>

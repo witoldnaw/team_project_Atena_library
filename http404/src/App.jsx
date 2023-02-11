@@ -36,6 +36,7 @@ Modal.setAppElement(document.getElementById("root"));
             path="auth/admin"
             element={role ? <AddBooks /> : <Navigate to="/auth/login" />}
           />
+          <Route path="/auth/login/przypomnijhaslo" element={<ForgotPassword/>} />
         </Routes>
         <Footer />
       </BrowserRouter>

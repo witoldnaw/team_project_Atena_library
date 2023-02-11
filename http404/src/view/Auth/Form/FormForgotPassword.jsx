@@ -1,13 +1,13 @@
 import styles from "./Form.module.css"
 import picture from "./illustration_atena_login.png"
-import { Link } from "react-router-dom"
 
-export const FormLogin = ({ submitText, isPasswordHidden = false, onSubmit }) => (
+export const FormForgotPassword = ({ submitText, isPasswordHidden = false, onSubmit }) => (
   
 
   <div className={styles.formWrapper}>
     <img className={styles.picture} src={picture} alt="picture books"></img>
     <form onSubmit={onSubmit} >
+    <h3>Przypomnij haslo:</h3>
       <div className={styles.labelWrapper}>
         <label htmlFor="email">E-mail</label>
         <input type="email" name="email" id="email" />
@@ -18,11 +18,6 @@ export const FormLogin = ({ submitText, isPasswordHidden = false, onSubmit }) =>
           <input type="password" name="password" id="password" />
         </div>
       )}
-        <Link to="przypomnijhaslo">
-        <div className={styles.linkToForgotPassword}>
-          <p>zapomniałeś hasła? </p>
-        </div>
-        </Link>
       <div className={styles.btnWrapper}>
       <button className={styles.btnForm}>{submitText}</button>
       </div>

@@ -1,8 +1,8 @@
 
 import { sendPasswordResetEmail } from "@firebase/auth";
 import { auth } from "../../../Api/firebase";
-import { FormLogin } from "../../Auth/Form/FormLogin";
 import { firebaseErrors } from "../../../utils/firebaseErrors";
+import { FormForgotPassword } from "../Form/FormForgotPassword";
 
 export const ForgotPassword = () => {
   const handlePasswordReset = (e) => {
@@ -14,7 +14,7 @@ export const ForgotPassword = () => {
   };
 
   return (
-    <FormLogin
+    <FormForgotPassword
       submitText="Poproś o przypomnienie hasła"
       onSubmit={handlePasswordReset}
       isPasswordHidden

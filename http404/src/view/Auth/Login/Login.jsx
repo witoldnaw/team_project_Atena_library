@@ -22,5 +22,9 @@ export const Login = () => {
       });
   };
 
-  return <FormLogin submitText="Zaloguj się" onSubmit={handleLogin} />;
+  return (
+    <>
+  <FormLogin submitText="Zaloguj się" onSubmit={handleLogin} />
+  </>
+  )
 };

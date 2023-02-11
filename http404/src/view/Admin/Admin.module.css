@@ -61,7 +61,7 @@ option {
     height: 2vw;
 }
 
-.booksWrapper {
+.listBooksWrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -71,7 +71,7 @@ option {
     background-color: var(--Cream);
 }
 
-.booksWrapper img {
+.listBooksWrapper img {
     grid-column: 1 / 2;
     grid-row: 1 / 4;
     height: 90%;
@@ -79,7 +79,7 @@ option {
     margin-left: 10vw;
 }
 
-.booksWrapper p {
+.listBooksWrapper p {
 color: var(--Dark-cyan);
 font-size: 1.2rem;
 }
@@ -111,7 +111,7 @@ font-size: 1.2rem;
     grid-row: 2 / 3;
 }
 
-#btn {
+#buttonAppearance {
     width: 10vw;
     height: 3vw;
     background-color: var(--Orange);
@@ -121,7 +121,7 @@ font-size: 1.2rem;
     font-size: 1.1rem;
 }
 
-.btn:hover {
+#buttonAppearance:hover {
     opacity: 0.6;
 }
 
@@ -135,4 +135,5 @@ font-size: 1.2rem;
         background-color: var(--Dark-cream);
         padding: 3vw;
     }
+
 

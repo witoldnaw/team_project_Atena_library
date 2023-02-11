@@ -13,7 +13,7 @@ export const AddBooks = () => {
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
   const [image, setImage] = useState("");
-  const [genres, setGenres] = useState("");
+  const [genre, setGenre] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ export const AddBooks = () => {
       status,
       userId: "",
       image,
-      genres,
+      genre,
     })
       .then(() => {
         setTitle("");
@@ -33,7 +33,7 @@ export const AddBooks = () => {
         setDescription("");
         setStatus("");
         setImage("");
-        setGenres("");
+        setGenre("");
       })
       .catch((error) => {
         console.error(error);
@@ -81,8 +81,8 @@ export const AddBooks = () => {
           required
         />
 
-<label htmlFor="genres">Kategoria</label>
-<select id="genres" name="genres" onChange={(e) => setGenres(e.target.value)}
+<label htmlFor="genre">Kategoria</label>
+<select id="genre" name="genre" onChange={(e) => setGenre(e.target.value)}
           required>
     <option value="kryminał">Kryminał</option>
     <option value="lektura szkolna">Lektura szkolna</option>
@@ -115,7 +115,7 @@ export const AddBooks = () => {
         />
 </div>
         <br />
-        <button id={styles.btn}>Dodaj książkę</button>
+        <button id={styles.buttonAppearance}>Dodaj książkę</button>
         </form>
         <img className={styles.illustration} src={illustration} alt="illustrartion man with book"></img>
 </div>
