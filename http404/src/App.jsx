@@ -28,7 +28,6 @@ function App() {
           <Route path="auth/register" element={<Register />} />
           <Route path="auth/login" element={<Login />} />
           <Route path="auth/profile" element={<Profile />} />
-          <Route path="auth/forgot-password" element={<ForgotPassword />} />
           <Route path="/searching" element={<SearchingSite />} />
           <Route path="/:bookTitle/:bookId" element={<BookDetails />} />
           <Route path="auth/admin" element={<AddBooks />} />

@@ -8,9 +8,9 @@ export const FormRegister = ({ submitText, onSubmit, open, handleClose, handleOp
 
   <div className={styles.formWrapper}>
     <img className={styles.picture} src={picture} alt="books"></img>
-    <form onSubmit={(event) => {
-      event.preventDefault();
-      onSubmit(event);
+    <form onSubmit={(e) => {
+      e.preventDefault();
+      onSubmit(e);
       handleOpen()
       }}>
       <div className={styles.labelWrapper}>
