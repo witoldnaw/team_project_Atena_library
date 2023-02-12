@@ -148,12 +148,12 @@ export const AdminPanelListItem = ({book, getData}) => {
                 <option value="kryminał">Kryminał</option>
                 <option value="lektura szkolna">Lektura szkolna</option>
                 <option value="poradnik">Poradnik</option>
-                <option value="ksiąka dla dzieci">Ksiąka dla dzieci</option>
+                <option value="książki dla dzieci">Książka dla dzieci</option>
                 <option value="biografia">Biografia</option>
                 <option value="literatura obyczajowa">
                   Literatura obyczajowa
                 </option>
-                <option value="thiller">Thiller</option>
+                <option value="thriller">Thriller</option>
                 <option value="literatura piękna">Literatura piękna</option>
               </select>
               { console.log(book.id)}

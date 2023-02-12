@@ -21,7 +21,6 @@ export const Register = () => {
       return firebaseErrors[error.code];
     }
   };
-
   return (
     <FormRegister submitText="Zarejestruj się" onSubmit={handleRegister} />
   );

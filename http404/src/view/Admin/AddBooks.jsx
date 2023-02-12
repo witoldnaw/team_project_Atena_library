@@ -93,7 +93,7 @@ export const AddBooks = () => {
             <option value="ksiąka dla dzieci">Ksiąka dla dzieci</option>
             <option value="biografia">Biografia</option>
             <option value="literatura obyczajowa">Literatura obyczajowa</option>
-            <option value="thiller">Thiller</option>
+            <option value="thriller">Thiller</option>
             <option value="literatura piękna">Literatura piękna</option>
           </select>
 
