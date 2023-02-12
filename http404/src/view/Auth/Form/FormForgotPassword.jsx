@@ -3,9 +3,8 @@ import picture from "./illustration_atena_login.png"
 
 export const FormForgotPassword = ({ submitText, isPasswordHidden = false, onSubmit }) => (
   
-
   <div className={styles.formWrapper}>
-    <img className={styles.picture} src={picture} alt="picture books"></img>
+    <img className={styles.picture} src={picture} alt="books"></img>
     <form onSubmit={onSubmit} >
     <h3>Przypomnij haslo:</h3>
       <div className={styles.labelWrapper}>
@@ -23,5 +22,4 @@ export const FormForgotPassword = ({ submitText, isPasswordHidden = false, onSub
       </div>
     </form>
     </div>
-    
   )

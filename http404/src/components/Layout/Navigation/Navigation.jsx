@@ -10,7 +10,7 @@ const signOutReload = () => {
   window.location.reload(true);
 };
 
-const Navigation = ({ user }) => {
+const Navigation = ({userData}) => {
   return (
     <nav className={styles.navigation}>
       <Link to="/">
@@ -18,7 +18,7 @@ const Navigation = ({ user }) => {
       </Link>
       <div className={styles.navigationDetails}>
         <div className={styles.btnWrapper}>
-          {!user && (
+          {!userData && (
             <>
               <Link to="auth/login">
                 <button>Zaloguj się</button>
@@ -37,8 +37,13 @@ const Navigation = ({ user }) => {
               </div>
             </>
           )}
-          {user && (
+          {userData && (
             <>
+              {userData.status === "admin" && (
+                <Link to="auth/admin">
+                  <button>Panel Admina</button>
+                </Link>
+              )}
               <Link to="/">
                 <button onClick={signOutReload}>Wyloguj się</button>
               </Link>

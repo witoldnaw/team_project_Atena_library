@@ -69,10 +69,32 @@ label {
     height: 40vw;
 }
 
-
 .linkToForgotPassword {
     text-align: center;
     text-decoration: none;
     color: var(--Orange)
+}
+
+.modalWrapper {
+  width: 100%;
+  height: 20rem;
+  background-color: var(--Dark-cream);
+  text-align: center;
+  color: var(--Orange);
+  margin-top: 10rem;
+  padding: 3rem;
+}
+
+.btnModal {
+  width: 14rem;
+  height: 3rem;
+  border-color: var(--Orange);
+  border-radius: 1.5rem;
+  background-color: var(--Orange);
+  color: var(--Dark-cream);
+  font-size: 1.1rem;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
 
