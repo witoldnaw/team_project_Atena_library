@@ -1,23 +1,18 @@
 import styles from "./Form.module.css";
 import picture from "./illustration_atena_signup.png";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Modal } from "@mui/material";
 
 
-export const FormRegister = ({ submitText, onSubmit }) => {
+export const FormRegister = ({ submitText, onSubmit, open, handleClose, handleOpen }) => (
 
-const handleOpen = () => {
-  setOpen(true)
-  setTimeout(() => setOpen(false), 8000);
-}
-const handleClose = () => setOpen(false)
-const [open, setOpen] = useState(false);
-
-  return (
   <div className={styles.formWrapper}>
     <img className={styles.picture} src={picture} alt="books"></img>
-    <form onSubmit={onSubmit}>
+    <form onSubmit={(event) => {
+      event.preventDefault();
+      onSubmit(event);
+      handleOpen()
+      }}>
       <div className={styles.labelWrapper}>
         <label htmlFor="email">E-mail:</label>
         <input type="email" name="email" id="email" />
@@ -39,7 +34,7 @@ const [open, setOpen] = useState(false);
         <input type="text" name="description" id="description" />
       </div>
       <div className={styles.btnWrapper}>
-        <button className={styles.btnForm} onClick={handleOpen}>{submitText}</button>
+        <button className={styles.btnForm}>{submitText}</button>
       </div>
       <Modal
 open={open}
@@ -56,5 +51,5 @@ contentLabel="Example Modal"
     </Modal>
     </form>
   </div>
-  )
-}
+  
+)
