@@ -17,9 +17,15 @@ export const AdminPanelListItem = ({book, getData}) => {
   const [status, setNewStatus] = useState(book.status);
   const [image, setNewImage] = useState();
   const [genre, setNewGenre] = useState(book.genre);
+  const [userId, setUserId] = useState(book.userId)
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false)
+
+  const deleteUserId = (e) => {
+    setNewStatus(e.target.value)
+    setUserId("")
+  }
   
   const handleDelete = () => {
     const docRef = doc(db, "books", book.id);
@@ -45,13 +51,15 @@ export const AdminPanelListItem = ({book, getData}) => {
           description: description || doc.data().description,
           status: status || doc.data().status,
           image: image || doc.data().image,
-          genres: genre || doc.data().genre,
+          genre: genre || doc.data().genre,
+          userId: userId
         };
         updateDoc(docRef, updates, book.id)
           .then(() => {
             handleClose()
             toast.success("Dane zostały zmienione poprawnie");
             getData()
+            deleteUserId()
           })
           .catch((error) => {
             console.log(error);
@@ -123,7 +131,7 @@ export const AdminPanelListItem = ({book, getData}) => {
                 key={book.statuss}
                 value="dostępna"
                 checked={status === "dostępna"}
-                onChange={(e) => setNewStatus(e.target.value)}
+                onChange={deleteUserId}
               />
 
               <label htmlFor="imageurl">Zdjęcie ksiązki:</label>
@@ -139,9 +147,9 @@ export const AdminPanelListItem = ({book, getData}) => {
                 <label htmlFor="gatunek">Gatunek:</label>
               <select
                 className={styles.input}
-                id="genres"
-                name="genres"
-                key={book.genres}
+                id="genre"
+                name="genre"
+                key={book.genre}
                 value={genre}
                 onChange={(e) => setNewGenre(e.target.value)}
               >

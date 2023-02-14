@@ -17,12 +17,11 @@ export const Register = () => {
 
   const handleRegister = async (e) => {
     try {
-      e.preventDefault();
       const { email, password, name, surname, description } = getFormData(e);
       const jwt = await createUserWithEmailAndPassword(auth, email, password);
       const userData = { status: "user", email, name, surname, description };
       const userRef = doc(db, "users", jwt.user.uid);
-      handleOpen()
+      e.preventDefault();
       await setDoc(userRef, {
         ...userData,
         id: jwt.user.uid,

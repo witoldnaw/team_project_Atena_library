@@ -12,13 +12,11 @@ export const FormRegister = ({
 }) => (
   <div className={styles.formWrapper}>
     <img className={styles.picture} src={picture} alt="books"></img>
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
-        onSubmit(event);
-        handleOpen();
-      }}
-    >
+    <form onSubmit={(e) => {
+      e.preventDefault();
+      onSubmit(e);
+      handleOpen()
+      }}>
       <div className={styles.labelWrapper}>
         <label htmlFor="email">E-mail:</label>
         <input type="email" name="email" id="email" />
