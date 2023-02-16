@@ -40,23 +40,18 @@ const Navigation = ({ userData }) => {
           )}
           {userData && (
             <>
-              {userData.status === "admin" && (
-                <Link to="auth/admin">
-                  <button>Panel Admina</button>
-                </Link>
-              )}
               <Link to="/">
                 <button onClick={signOutReload}>Wyloguj się</button>
               </Link>
-              <div className={styles.avatarWrapper}>
-                <Link to="auth/profile">
+              {userData.status === "admin" && (
+                <Link to="auth/admin">
                   <img
                     className={styles.avatarAtena}
                     src={avatar}
                     alt="avatar Atena"
                   ></img>
                 </Link>
-              </div>
+              )}
             </>
           )}
         </div>

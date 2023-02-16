@@ -1,16 +1,11 @@
-
-import SearchList from "./SearchList/SearchList"
-
+import SearchList from "./SearchList/SearchList";
 
 const SearchingSite = () => {
-
-
-    return (
+  return (
     <>
-
-    <SearchList />
+      <SearchList />
     </>
-    )
-}
+  );
+};
 
-export default SearchingSite
+export default SearchingSite;

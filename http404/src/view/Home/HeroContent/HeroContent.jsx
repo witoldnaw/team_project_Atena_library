@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./HeroContent.module.css";
 import illustration from "./illustration_hero_header1.png";
-import illustrationWave from "./illustration_hero_header_wave.png";
 
 const HeroContent = () => {
   return (
