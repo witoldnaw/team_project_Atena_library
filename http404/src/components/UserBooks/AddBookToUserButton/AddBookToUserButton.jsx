@@ -24,8 +24,6 @@ export const AddBookToUserButton = ({ book, buttonStyle }) => {
     });
   };
 
-  console.log(userData);
-
   const handleClick = () => {
     userData ? addBook() : navigate("/auth/login");
   };

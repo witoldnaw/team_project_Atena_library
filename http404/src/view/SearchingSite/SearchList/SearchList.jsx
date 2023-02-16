@@ -47,7 +47,6 @@ const SearchList = () => {
     }
   };
   const updateInputValue = (event) => {
-    // console.log("updateInputValue", event.target.value);
     setInputValue(event.target.value);
   };
 

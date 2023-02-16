@@ -24,7 +24,11 @@ export const AdminPanelBooksList = () => {
 
   return (
     <>
-      <h2 className={styles.h2}>Zarządzaj książkami w bibliotece:</h2>
+      <div className={styles.adminPanelTitleWrapper}>
+        <h2 className={styles.adminPanelTitle}>
+          Zarządzaj książkami w bibliotece:
+        </h2>
+      </div>
       {books.map((book) => (
         <AdminPanelListItem book={book} getData={getData} />
       ))}

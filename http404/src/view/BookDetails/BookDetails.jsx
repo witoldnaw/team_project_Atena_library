@@ -66,7 +66,7 @@ export const BookDetails = () => {
         </section>
       </div>
       <section className={styles.book_description}>
-        <h3>Opis:</h3>
+        <p className={styles.book_description_name}>Opis:</p>
         <p>{book.description}</p>
       </section>
       <div className={styles.button_wrapper}>

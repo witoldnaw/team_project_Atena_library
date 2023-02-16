@@ -49,7 +49,9 @@ export const UserBooksList = () => {
           <img key={id} src={image} alt="book cover" />
           <ul className={styles.user_books_details}>
             <li>
-              <h3 key={id}>{title}</h3>
+              <h3 className={styles.user_books_title} key={id}>
+                {title}
+              </h3>
             </li>
             <li>
               <h4 key={id}>{author}</h4>
