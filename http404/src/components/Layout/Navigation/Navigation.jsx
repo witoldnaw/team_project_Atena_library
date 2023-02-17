@@ -38,7 +38,7 @@ const Navigation = ({ userData }) => {
               </div>
             </>
           )}
-          {!userData.status === "admin" && (
+          {userData.status === "user" && (
             <>
               <Link to="/">
                 <button onClick={signOutReload}>Wyloguj się</button>
