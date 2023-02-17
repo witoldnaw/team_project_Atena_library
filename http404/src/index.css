@@ -17,7 +17,8 @@
   --Light-cream: rgb(250, 249, 248);
 }
 
-body {
+html, body {
+  height: 100%;
   margin: 0;
   font-family: "Kumbh Sans", sans-serif;
   font-family: "Nunito Sans", sans-serif;

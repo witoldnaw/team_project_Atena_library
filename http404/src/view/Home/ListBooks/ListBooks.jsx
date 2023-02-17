@@ -8,7 +8,7 @@ import ReactPaginate from "react-paginate";
 const ListBooks = ({ selectedGenre, currentPage, onPageChange }) => {
   const [books, setBooks] = useState([]);
 
-  const pageSize = 8;
+  const pageSize = 9;
   const [totalPages, setTotalPages] = useState(1);
 
   const getBooks = () => {

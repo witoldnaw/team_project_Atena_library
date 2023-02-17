@@ -44,10 +44,9 @@ function App() {
           pauseOnFocusLoss={false}
           draggable
           pauseOnHover={false}
-          toastStyle={{ backgroundColor:  "rgb(250, 235, 218)" }}
-          progressStyle={{ backgroundColor:  "rgb(212, 112, 6)" }}
-          icon = {false}
-
+          toastStyle={{ backgroundColor: "rgb(250, 235, 218)" }}
+          progressStyle={{ backgroundColor: "rgb(212, 112, 6)" }}
+          icon={false}
         />
         <Footer />
       </BrowserRouter>

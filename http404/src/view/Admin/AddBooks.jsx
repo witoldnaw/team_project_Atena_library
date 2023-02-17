@@ -150,7 +150,7 @@ export const AddBooks = () => {
               </div>
             </div>
             <div className={styles.buttonWrapper}>
-            <button id={styles.buttonAppearance}>Dodaj książkę</button>
+              <button id={styles.buttonAppearance}>Dodaj książkę</button>
             </div>
           </form>
           <img
