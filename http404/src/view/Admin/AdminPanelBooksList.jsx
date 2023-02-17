@@ -6,6 +6,7 @@ import { AdminPanelListItem } from "./AdminPanelListItem";
 
 export const AdminPanelBooksList = () => {
   const [books, setBooks] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const getData = () => {
     const itemsCollection = collection(db, "books");
@@ -29,7 +30,13 @@ export const AdminPanelBooksList = () => {
           Zarządzaj książkami w bibliotece:
         </h2>
       </div>
-      {books.map((book) => (
+      <input className={styles.adminSearchInput}
+  type="text"
+  placeholder="Wyszukaj tytuł lub autora książki"
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+/>
+{books.filter(book => book.title.toLowerCase().includes(searchTerm.toLowerCase()) || book.author.toLowerCase().includes(searchTerm.toLowerCase())).map(book => (
         <AdminPanelListItem book={book} getData={getData} />
       ))}
     </>

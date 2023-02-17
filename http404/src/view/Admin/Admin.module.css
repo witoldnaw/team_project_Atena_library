@@ -30,7 +30,8 @@
 }
 
 .adminSelect,
-.adminInput {
+.adminInput,
+.adminSearchInput {
   border-radius: 2rem;
   border-style: solid;
   border-width: 1px;
@@ -42,6 +43,7 @@
   margin-bottom: 1rem;
   color: var(--Dark-cyan);
 }
+
 
 .statusBox {
   display: flex;
@@ -203,4 +205,9 @@
   font-family: "Nunito Sans", sans-serif;
   font-weight: bold;
   margin: 1rem;
+}
+
+.adminSearchInput {
+  width: 30%;
+  margin-left: 20%;
 }
