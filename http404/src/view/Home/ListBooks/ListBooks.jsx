@@ -6,11 +6,9 @@ import styles from "./ListBooks.module.css";
 import ReactPaginate from "react-paginate";
 
 const ListBooks = ({ selectedGenre, currentPage, onPageChange }) => {
-  console.log(`selected Genres:`, selectedGenre);
-
   const [books, setBooks] = useState([]);
 
-  const pageSize = 6;
+  const pageSize = 9;
   const [totalPages, setTotalPages] = useState(1);
 
   const getBooks = () => {
@@ -20,7 +18,6 @@ const ListBooks = ({ selectedGenre, currentPage, onPageChange }) => {
         id: doc.id,
         ...doc.data(),
       }));
-      console.log(`wszytskie książki`, allBooks);
       const filteredBooks = allBooks.filter((book) => {
         if (selectedGenre.id === "allGenres") {
           return true;
@@ -31,11 +28,11 @@ const ListBooks = ({ selectedGenre, currentPage, onPageChange }) => {
           return false;
         }
       });
-      console.log(`przefiltrowane książki`, filteredBooks);
       const startIndex = currentPage * pageSize;
-      const booksOnPage = filteredBooks.slice(startIndex, startIndex + pageSize);
-
-      console.log(`książki na stronie`, booksOnPage);
+      const booksOnPage = filteredBooks.slice(
+        startIndex,
+        startIndex + pageSize
+      );
       setBooks(booksOnPage);
       setTotalPages(Math.ceil(filteredBooks.length / pageSize));
     });

@@ -34,39 +34,39 @@ export const BookDetails = () => {
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.title}>{book.title}</h1>
-    <div className={styles.infoWrapper}>
-      <section className={styles.book_info}>
-        <img src={book.image} alt="cover img" />{" "}
-        <ul className={styles.info_list}>
-          <li>
-            <p>
-              <strong>Tytuł: </strong>
-              {book.title}
-            </p>
-          </li>
-          <li>
-            <p>
-              <strong>Autor: </strong>
-              {book.author}
-            </p>
-          </li>
-          <li>
-            <p>
-              <strong>Gatunek: </strong>
-              {book.genre}
-            </p>
-          </li>
-          <li>
-            <p>
-              <strong>Status: </strong>
-              {book.status}
-            </p>
-          </li>
-        </ul>
-      </section>
+      <div className={styles.infoWrapper}>
+        <section className={styles.book_info}>
+          <img src={book.image} alt="cover img" />{" "}
+          <ul className={styles.info_list}>
+            <li>
+              <p>
+                <strong>Tytuł: </strong>
+                {book.title}
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>Autor: </strong>
+                {book.author}
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>Gatunek: </strong>
+                {book.genre}
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>Status: </strong>
+                {book.status}
+              </p>
+            </li>
+          </ul>
+        </section>
       </div>
       <section className={styles.book_description}>
-        <h3>Opis:</h3>
+        <p className={styles.book_description_name}>Opis:</p>
         <p>{book.description}</p>
       </section>
       <div className={styles.button_wrapper}>

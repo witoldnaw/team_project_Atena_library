@@ -14,9 +14,7 @@ const BookCard = ({ book, user }) => {
           {user ? (
             <Profile />
           ) : (
-            // <Link to="/auth/profile">
             <AddBookToUserButton buttonStyle={styles.cardOption} book={book} />
-            // {/* </Link> */}
           )}
         </div>
         <div className={styles.cardMedia}>

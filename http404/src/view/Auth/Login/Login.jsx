@@ -5,7 +5,6 @@ import { firebaseErrors } from "../../../utils/firebaseErrors";
 import { getFormData } from "../../../utils/getFormData";
 import { useNavigate } from "react-router-dom";
 
-
 export const Login = () => {
   const navigate = useNavigate();
   const handleLogin = (e) => {
@@ -14,7 +13,7 @@ export const Login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((jwt) => {
         e.target.reset();
-        navigate("/")
+        navigate("/");
       })
       .catch((e) => {
         console.dir(e);
@@ -24,7 +23,7 @@ export const Login = () => {
 
   return (
     <>
-  <FormLogin submitText="Zaloguj się" onSubmit={handleLogin} />
-  </>
-  )
+      <FormLogin submitText="Zaloguj się" onSubmit={handleLogin} />
+    </>
+  );
 };

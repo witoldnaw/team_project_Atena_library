@@ -46,6 +46,7 @@
   margin: 1.5rem;
   border-color: var(--Orange);
   border-radius: 2rem;
+  border-style: none;
   background-color: var(--Orange);
   color: var(--Cream);
   font-size: 2rem;

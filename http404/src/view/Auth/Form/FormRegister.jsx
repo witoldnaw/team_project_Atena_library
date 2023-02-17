@@ -12,11 +12,13 @@ export const FormRegister = ({
 }) => (
   <div className={styles.formWrapper}>
     <img className={styles.picture} src={picture} alt="books"></img>
-    <form onSubmit={(e) => {
-      e.preventDefault();
-      onSubmit(e);
-      handleOpen()
-      }}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSubmit(e);
+        handleOpen();
+      }}
+    >
       <div className={styles.labelWrapper}>
         <label htmlFor="email">E-mail:</label>
         <input type="email" name="email" id="email" />
@@ -41,18 +43,22 @@ export const FormRegister = ({
         <button className={styles.btnForm}>{submitText}</button>
       </div>
       <Modal open={open} onClose={handleClose} contentLabel="Example Modal">
-        <div className={styles.modalWrapper}>
-          <h2>Gratulacje! Pomyślnie zarejestrowałeś się w naszym serwisie.</h2>
-          <p>
-            Teraz możesz korzystać z wszystkich naszych usług. Jeśli
-            potrzebujesz pomocy lub masz jakiekolwiek pytania, nie wahaj się
-            skontaktować z naszym zespołem wsparcia. Dziękujemy za wybór naszej
-            witryny i mamy nadzieję, że będzie Ci miło korzystać z naszych
-            usług.
-          </p>
-          <Link to="/auth/login">
-            <button className={styles.btnModal}>Zaloguj się!</button>
-          </Link>
+        <div className={styles.modalWrapperRegister}>
+          <div className={styles.modalContentWrapper}>
+            <h2 className={styles.modalTitle}>Gratulacje!</h2>
+            <p className={styles.modalText}>
+              Pomyślnie zarejestrowałeś się w naszej bibliotece.
+            </p>
+            <p className={styles.modalTextSmall}>
+              Teraz możesz swobodnie wypożyczać książki z naszych półek. Jeśli
+              potrzebujesz pomocy lub masz jakiekolwiek pytania, nie wahaj się
+              skontaktować z naszym Bibliotekarzem.
+            </p>
+            <p className={styles.modalTextSmall}>Życzymy udanej lektury!</p>
+            <Link to="/auth/login">
+              <button className={styles.btnModal}>Zaloguj się!</button>
+            </Link>
+          </div>
         </div>
       </Modal>
     </form>

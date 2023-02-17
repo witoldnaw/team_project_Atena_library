@@ -1,12 +1,8 @@
 import { useEffect, useState } from "react";
 import { db } from "../../../src/Api/firebase";
-import {
-  collection,
-  getDocs,
-} from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import styles from "./Admin.module.css";
 import { AdminPanelListItem } from "./AdminPanelListItem";
-
 
 export const AdminPanelBooksList = () => {
   const [books, setBooks] = useState([]);
@@ -26,12 +22,16 @@ export const AdminPanelBooksList = () => {
     getData();
   }, []);
 
-return (
-  <>
-  <h2 className={styles.h2}>Zarządzaj książkami w bibliotece:</h2>
+  return (
+    <>
+      <div className={styles.adminPanelTitleWrapper}>
+        <h2 className={styles.adminPanelTitle}>
+          Zarządzaj książkami w bibliotece:
+        </h2>
+      </div>
       {books.map((book) => (
-          <AdminPanelListItem book={book} getData={getData}/>
-    ))}
-</>
-)
-  }
+        <AdminPanelListItem book={book} getData={getData} />
+      ))}
+    </>
+  );
+};

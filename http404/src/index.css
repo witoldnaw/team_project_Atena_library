@@ -13,18 +13,15 @@
 
   --Very-dark-blue: rgb(38, 47, 68);
   --Dark-cream: rgb(250, 235, 218);
+  --Darker-cream: rgb(248, 232, 213);
   --Light-cream: rgb(250, 249, 248);
 }
 
-body {
+html, body {
+  height: 100%;
   margin: 0;
   font-family: "Kumbh Sans", sans-serif;
   font-family: "Nunito Sans", sans-serif;
   font-size: 14px;
   background-color: var(--Cream);
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
 }

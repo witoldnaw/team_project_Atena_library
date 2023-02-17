@@ -10,7 +10,7 @@ export const AddBookToUserButton = ({ book, buttonStyle }) => {
   const { userData } = useContext(userDataContext);
   const [isDisabled, setIsDisabled] = useState();
   const navigate = useNavigate();
-  const notify = () => toast.success("Dodano do Biblioteki");
+  const notify = () => toast.success("Dodano do Twojej Półki");
 
   useEffect(() => {
     setIsDisabled(book.status === "niedostępna" ? true : false);
@@ -23,8 +23,6 @@ export const AddBookToUserButton = ({ book, buttonStyle }) => {
       status: "niedostępna",
     });
   };
-
-  console.log(userData);
 
   const handleClick = () => {
     userData ? addBook() : navigate("/auth/login");

@@ -14,7 +14,6 @@ const Filtration = ({ onGenreChange }) => {
         id: doc.id,
         ...doc.data(),
       }));
-      console.log("wszystkie kategorie:", allGenres);
       setGenres(allGenres);
     });
   };

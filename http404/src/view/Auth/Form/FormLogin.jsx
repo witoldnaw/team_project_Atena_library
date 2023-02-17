@@ -22,12 +22,12 @@ export const FormLogin = ({
       )}
       <Link to="przypomnijhaslo">
         <div className={styles.linkToForgotPassword}>
-          <p>zapomniałeś hasła? </p>
+          <p>Nie pamiętasz hasła? Przypomnij hasło!</p>
         </div>
       </Link>
       <Link to="/auth/register">
         <div className={styles.linkToForgotPassword}>
-          <p>Nie masz jeszcze konta? Zarejestruj się! </p>
+          <p>Nie masz konta? Zarejestruj się! </p>
         </div>
       </Link>
       <div className={styles.btnWrapper}>

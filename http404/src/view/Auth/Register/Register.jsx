@@ -7,12 +7,11 @@ import { FormRegister } from "../Form/FormRegister";
 import { useState } from "react";
 
 export const Register = () => {
-
   const handleOpen = () => {
-    setOpen(true)
+    setOpen(true);
     setTimeout(() => setOpen(false), 8000);
-  }
-  const handleClose = () => setOpen(false)
+  };
+  const handleClose = () => setOpen(false);
   const [open, setOpen] = useState(false);
 
   const handleRegister = async (e) => {
@@ -31,7 +30,12 @@ export const Register = () => {
     }
   };
   return (
-    <FormRegister submitText="Zarejestruj się" onSubmit={handleRegister} handleClose={handleClose} handleOpen={handleOpen} open={open} />
+    <FormRegister
+      submitText="Zarejestruj się"
+      onSubmit={handleRegister}
+      handleClose={handleClose}
+      handleOpen={handleOpen}
+      open={open}
+    />
   );
 };
-

@@ -32,7 +32,7 @@ const SearchList = () => {
           book.author.toLowerCase().includes(query.toLowerCase())
       );
 
-      console.log(`przefiltrowane książki: ${filteredBooks}` );
+      console.log(`przefiltrowane książki: ${filteredBooks}`);
       setLastSearchQuery(query);
       setBooks(filteredBooks);
       setSearchState(true);
@@ -47,7 +47,6 @@ const SearchList = () => {
     }
   };
   const updateInputValue = (event) => {
-    // console.log("updateInputValue", event.target.value);
     setInputValue(event.target.value);
   };
 
